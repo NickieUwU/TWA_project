@@ -17,22 +17,22 @@
             $warning = "";
             if ($_SERVER["REQUEST_METHOD"] === "POST") 
             {
-                $username = $_POST["Username"];
+                $_username = $_POST["Username"];
                 $password = $_POST["Password"];
+                $username = "@".$_username;
 
-                if(empty($username)) 
+                if(isset($username) && isset($password))
                 {
-                    $warning = "Please provide a username";
-                }
-
-                if(empty($password))
-                {
-                    $warning = "please provide a password";
-                }
-
-                if(empty($username) && empty($password))
-                {
-                    $warning = "Please fill the form";
+                    Db::connect("localhost", "sin", "root", "");
+                    $result = Db::query("SELECT * FROM Users WHERE Handler=?", $username);
+                    if($result)
+                    {
+                        
+                    }
+                    else
+                    {
+                        $warning = "user was not found";
+                    }
                 }
             }
         ?>
