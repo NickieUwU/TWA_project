@@ -8,12 +8,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Sin</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="Login.css">
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
 </head>
 <body>
-    <h1 class="h1Login">Login</h1>
+    <h1 class="h1Login">Log in</h1>
     <form class="lblLogin" action="Login.php" method="post">
         <?php
             
