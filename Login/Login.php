@@ -14,6 +14,7 @@
     <h1 class="h1Login">Login</h1>
     <form class="lblLogin" action="Login.php" method="post">
         <?php
+            session_start();
             $warning = "";
             if ($_SERVER["REQUEST_METHOD"] === "POST") 
             {
@@ -27,8 +28,9 @@
                     $result = Db::query("SELECT * FROM Users WHERE Handler=?", $username);
                     if($result)
                     {
-                        session_start();
+                        
                         $_SESSION["username"] = $username;
+                        $_SESSION["connection"] = true;
                         header("Location: ../Home/Home.php");
                         exit();
                     }

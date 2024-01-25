@@ -1,3 +1,10 @@
+<?php
+    if($_SESSION["connection"] == false)
+    {
+        header("Location: ../Login/Login.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
