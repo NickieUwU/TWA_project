@@ -9,6 +9,21 @@
 </head>
 <body>
     <h1 class="h1Signin">Sign in</h1>
-    <form action="Signin.php" method="post"></form>
+    <form class="lblSignin" action="Signin.php" method="post">
+        <?php
+            $warning = "";
+        ?>
+        <label><?php echo $warning ?></label>
+        <input type="text" name="Name" placeholder="Name" autocomplete="off"><br>
+        <input type="text" name="Username" placeholder="Username" autocomplete="off"><br> 
+        <input type="email" name="Email" placeholder="youremail@example.com"><br>
+        <input type="tel" name="Telephone" placeholder="Phone number" autocomplete="off"><br>
+        <input type="password" name="Password" placeholder="Password" autocomplete="off"><br>
+        <button type="submit">Sign in</button>
+    </form>
+    <p class="PYesAccnt">
+        Already registered?<br>
+        <a class="linkLogin" href="../Login/Login.php">Log in</a>
+    </p>
 </body>
 </html>

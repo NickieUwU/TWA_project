@@ -1,7 +1,6 @@
 <?php
     session_start();
-    include("../DbHandler.php");
-    
+    include("../DbHandler.php");  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +26,7 @@
                 if(isset($username) && isset($password))
                 {
                     Db::connect("localhost", "sin", "root", "");
-                    $result = Db::query("SELECT * FROM Users WHERE Handler=?", $username);
+                    $result = Db::query("SELECT * FROM Users WHERE Username=?", $username);
                     if($result)
                     {
                         
