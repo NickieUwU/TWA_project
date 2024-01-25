@@ -37,6 +37,7 @@
                         $hspassword = password_hash($password, PASSWORD_DEFAULT);
                         $data = array("name" => $name, "username" => $username, "password" => $hspassword);
                         Db::insert("users", $data);
+                        $_SESSION["username"] = $username;
                         header("Location: ../NewUserVerify/NewUserVerify.php");
                     }
                 }

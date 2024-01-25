@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +24,7 @@
 <?php
     if($_POST)
     {
+        $_SESSION["login"] = true;
         header("Location: ../Home/Home.php");
     }
 ?>
