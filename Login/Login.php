@@ -1,19 +1,5 @@
 <?php
     include("../DbHandler.php");
-    $warning = "";
-    if ($_SERVER["REQUEST_METHOD"] === "POST") 
-    {
-        $username = $_POST["Username"];
-        $password = $_POST["Password"];
-
-        if (empty($username) && empty($password)) {
-            $warning = "Please fill the form";
-        } elseif (empty($username)) {
-            $warning = "Please provide a username";
-        } elseif (empty($password)) {
-            $warning = "Please provide a password";
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +13,29 @@
 <body>
     <h1 class="h1Login">Login</h1>
     <form class="lblLogin" action="Login.php" method="post">
+        <?php
+            $warning = "";
+            if ($_SERVER["REQUEST_METHOD"] === "POST") 
+            {
+                $username = $_POST["Username"];
+                $password = $_POST["Password"];
+
+                if(empty($username)) 
+                {
+                    $warning = "Please provide a username";
+                }
+
+                if(empty($password))
+                {
+                    $warning = "please provide a password";
+                }
+
+                if(empty($username) && empty($password))
+                {
+                    $warning = "Please fill the form";
+                }
+            }
+        ?>
         <label><?php echo $warning ?></label>
         <input type="text" name="Username" placeholder="Username" autocomplete="off"><br> 
         <input type="password" name="Password" placeholder="Password"><br>
