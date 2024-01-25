@@ -1,0 +1,68 @@
+.h1Login
+{
+    position: absolute;
+    left: 50%;
+    color: #fff;
+}
+
+.lblLogin {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+
+.lblLogin label
+{
+    color: red;
+    text-align: center;
+    display: block;
+}
+
+/* Style for the input fields */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    appearance: none;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+.lblLogin button {
+    background-color: #5865F2;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    left: 35%;
+    cursor: pointer;
+}
+
+.lblLogin button:hover {
+    background-color: #405bd4;
+}
+
+.PNoAccnt
+{
+    position: absolute;
+    left: 47%;
+    top: 63%;
+    color: #fff;
+}
+
+.linkSignIn
+{
+    text-decoration: underline;
+    color: #fff;
+    position: relative;
+    left: 35%;
+}
