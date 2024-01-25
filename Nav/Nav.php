@@ -8,7 +8,7 @@
     <a class="navmenu" href="../Home/Home.php">
         Messages
     </a><br>
-    <a class="navmenu" href="../Home/Home.php">
+    <a class="navmenu" href="../Profile/Profile.php">
         Profile
     </a><br>
 </nav>
