@@ -18,7 +18,25 @@
             $warning = "";
             if($_SERVER["REQUEST_METHOD"] === "POST")
             {
-                header("Location: ../NewUserVerify/NewUserVerify.php");
+                $name = $_POST["Name"];
+                $_username = $_POST["Username"];
+                $username = "@".$_username;
+                $password = $_POST["Password"];
+
+                if(isset($name) && isset($username) && isset($password))
+                {
+                    Db::connect("localhost", "sin", "root", "");
+                    $query = Db::query("SELECT * FROM users WHERE username=?", $username);
+
+                    if($result && $result->rowCount() > 0)
+                    {
+                        $warning = "user already registered";
+                    }
+                    else
+                    {
+                        
+                    }
+                }
             }
         ?>
         <label><?php echo $warning ?></label>
