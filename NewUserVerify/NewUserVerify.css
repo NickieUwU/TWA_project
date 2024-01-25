@@ -1,0 +1,63 @@
+.form_verify {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+
+input[type="radio"] {
+    /* Styles for radio buttons (You can customize as needed) */
+    position: absolute;
+    left: 35%;
+}
+
+.typeText
+{
+    position: absolute;
+    left: 45%;
+    color: #fff;
+}
+
+.form_verify .verification_input
+{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    appearance: none;
+}
+
+.form_verify .verification_input
+{
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form_verify button {
+    background-color: #5865F2;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    left: 35%;
+    cursor: pointer;
+}
+
+.form_verify button {
+    background-color: #5865F2;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    left: 35%;
+    cursor: pointer;
+}
+
+.form_verify button:hover {
+    background-color: #405bd4;
+}

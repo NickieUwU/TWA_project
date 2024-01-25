@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include("../DbHandler.php"); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +16,7 @@
     <form class="lblSignin" action="Signin.php" method="post">
         <?php
             $warning = "";
-            if($_POST)
+            if($_SERVER["REQUEST_METHOD"] === "POST")
             {
                 header("Location: ../NewUserVerify/NewUserVerify.php");
             }

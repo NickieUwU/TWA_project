@@ -20,9 +20,7 @@
 
 /* Style for the input fields */
 input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"] {
+input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -34,9 +32,7 @@ input[type="tel"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus {
+input[type="password"]:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
