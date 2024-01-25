@@ -7,7 +7,7 @@
     <script src="NewUserVerify.js"></script>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
 </head>
-<body>
+<body onload="changecontent()">
     <form action="NewUserVerify.php" method="post">
         <div id="verification_content"></div>
         <input type="radio" name="verification_radio" value="e-mail" id="email" onchange="changecontent()" checked>e-mail<br>

@@ -7,14 +7,10 @@ function changecontent()
     let display_data = document.querySelector("#verification_content");
     if(email_input.checked)
     {
-        display_data.innerHTML = "";
+        display_data.innerHTML = '<input type="email" name="email" placeholder="youremail@example.com"><br>';
     }
     else if(phone_input.checked)
     {
-
-    }
-    else
-    {
-
+        display_data.innerHTML = '<input type="tel" name="Telephone" placeholder="Phone number"><br>';
     }
 }
