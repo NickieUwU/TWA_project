@@ -12,12 +12,14 @@
     <form class="lblSignin" action="Signin.php" method="post">
         <?php
             $warning = "";
+            if($_POST)
+            {
+                header("Location: ../NewUserVerify/NewUserVerify.php");
+            }
         ?>
         <label><?php echo $warning ?></label>
         <input type="text" name="Name" placeholder="Name" autocomplete="off"><br>
         <input type="text" name="Username" placeholder="Username" autocomplete="off"><br> 
-        <input type="email" name="Email" placeholder="youremail@example.com"><br>
-        <input type="tel" name="Telephone" placeholder="Phone number" autocomplete="off"><br>
         <input type="password" name="Password" placeholder="Password" autocomplete="off"><br>
         <button type="submit">Sign in</button>
     </form>
