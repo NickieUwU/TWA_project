@@ -28,13 +28,16 @@
                     Db::connect("localhost", "sin", "root", "");
                     $query = Db::query("SELECT * FROM users WHERE username=?", $username);
 
-                    if($result && $result->rowCount() > 0)
+                    if($query)
                     {
                         $warning = "user already registered";
                     }
                     else
                     {
-                        
+                        $hspassword = password_hash($password, PASSWORD_DEFAULT);
+                        $data = array("name" => $name, "username" => $username, "password" => $hspassword);
+                        Db::insert("users", $data);
+                        header("Location: ../NewUserVerify/NewUserVerify.php");
                     }
                 }
             }
