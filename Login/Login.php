@@ -1,5 +1,7 @@
 <?php
+    session_start();
     include("../DbHandler.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@
     <h1 class="h1Login">Login</h1>
     <form class="lblLogin" action="Login.php" method="post">
         <?php
-            session_start();
+            
             $warning = "";
             if ($_SERVER["REQUEST_METHOD"] === "POST") 
             {
@@ -30,7 +32,7 @@
                     {
                         
                         $_SESSION["username"] = $username;
-                        $_SESSION["connection"] = true;
+                        $_SESSION["login"] = true;
                         header("Location: ../Home/Home.php");
                         exit();
                     }
