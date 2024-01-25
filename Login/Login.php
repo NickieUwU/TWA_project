@@ -27,7 +27,10 @@
                     $result = Db::query("SELECT * FROM Users WHERE Handler=?", $username);
                     if($result)
                     {
-                        
+                        session_start();
+                        $_SESSION["username"] = $username;
+                        header("Location: ../Home/Home.php");
+                        exit();
                     }
                     else
                     {
