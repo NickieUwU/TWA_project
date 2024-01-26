@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-.posts
+.Posts
 {
     border: 1px solid black;
     position: absolute;
@@ -25,7 +25,7 @@
     width: 60%;
 }
 
-.posts .PFP
+.Posts .PFP
 {
     height: 50px;
     width: 50px;
@@ -35,14 +35,13 @@
     left: 1%;
 }
 
-.posts .PFP:hover
+.Posts .PFP:hover
 {
     cursor: pointer;
 }
 
-.posts .Name .Name
+.Posts .Name .Name
 {
-   border: 1px solid black;
    text-decoration: none;
    width: fit-content;
    height: fit-content;
@@ -53,8 +52,27 @@
    left: 8%;
 }
 
-.posts .Name .Name:hover
+.Posts .Name .Name:hover
 {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.Posts .Username
+{
+    border: 1px solid black;
+    position: absolute;
+    top: 7.5%;
+    left: 8%;
+}
+
+.Posts .Post
+{
+    border: 1px solid black;
+    /*width: fit-content;*/
+    width: 90%;
+    height: fit-content;
+    position: absolute;
+    top: 12.5%;
+    left: 8%;
 }

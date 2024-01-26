@@ -11,6 +11,7 @@
     $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
     foreach($Users as $User)
     {
+        $ID = $User["ID"];
         $Name = $User["Name"];
         $Username = $User["Username"];
     }
@@ -36,13 +37,25 @@
                 }
             </script>
     </div>
-    <div class="posts">
-             <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
-             <div class="Name">
-                <?php
-                    echo "<a href='../Profile/Profile.php?username=$Username' class='Name'>$Name</a>";
+    <div class="Posts">
+        <a href='../Profile/Profile.php?username=$Username'>
+            <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
+        </a>
+        <div class="Name">
+           <?php
+               echo "<a href='../Profile/Profile.php?username=$Username' class='Name'>$Name</a>";
+           ?>
+        </div>
+        <div class="Username">
+           <?php
+               echo $Username;
+           ?>
+        </div>
+        <div class="Post">
+                <?php 
+                    require("../DisplayData/DisplayContent.php");
                 ?>
-             </div>
+        </div>
     </div>
 
 </body>
