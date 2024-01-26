@@ -1,13 +1,9 @@
 <?php
+    error_reporting(E_ALL & ~E_WARNING);
     session_start();
     
     // Check if the user is not logged in
-    if (!isset($_SESSION["login"]) || $_SESSION["login"] == false) {
-        session_unset();
-        session_destroy();
-        header("Location: ../Login/Login.php");
-        exit();
-    }
+    include_once("../ConnectionChecker.php");
 
     require("../Nav/Nav.php");
 ?>
