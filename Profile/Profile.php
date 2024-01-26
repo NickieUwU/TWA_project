@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("../DbHandler.php");
-include_once("../ConnectionChecker.php");
+require("../ConnectionChecker.php");
 
 $username = $_SESSION["username"];
 Db::connect("localhost", "sin", "root", "");

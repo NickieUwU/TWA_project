@@ -1,5 +1,12 @@
 nav {
     text-align: left;
+    width: fit-content; /* Set your desired width */
+    height: 100%;
+    border-right: 1px solid #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Enable vertical scrolling if the content is too tall */
 }
 
 .navmenu {

@@ -16,19 +16,9 @@
     <title>Home / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS//UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
+    <link rel="stylesheet" href="Home.css">
 </head>
 <body>
-    <form action="Home.php" method="get">
-        <button type="submit" name="logout">Log out</button>
-    </form>
-
-    <?php
-        if (isset($_GET["logout"])) {
-            session_unset();
-            session_destroy();
-            header("Location: ../Login/Login.php");
-            exit();
-        }
-    ?>
+    
 </body>
 </html>
