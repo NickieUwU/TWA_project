@@ -1,7 +1,6 @@
 <?php
     include_once("../ConnectionChecker.php");
-
-    require("../Nav/Nav.php");
+    include_once("../Nav/Nav.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

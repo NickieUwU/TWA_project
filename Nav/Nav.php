@@ -1,8 +1,3 @@
-<?php
-    include("../DbHandler.php");
-    Db::connect("localhost", "sin", "root", "");
-    $query = Db::query("SELECT * FROM users WHERE username=?", $username);
-?>
 <nav>
     <a class="navmenu" href="../Home/Home.php">
         Home
