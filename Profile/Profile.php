@@ -1,27 +1,41 @@
-<?php
-session_start();
-include("../DbHandler.php");
-require("../ConnectionChecker.php");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile / Sin</title>
+    <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
+    <link rel="stylesheet" href="../Nav/Nav.css">
+    <link rel="stylesheet" href="./MyProfile/MyProfile.css">
+</head>
+<body>
 
-$username = $_SESSION["username"];
-Db::connect("localhost", "sin", "root", "");
+    <?php
+    session_start();
+    include("../DbHandler.php");
+    require("../ConnectionChecker.php");
 
-$userData = Db::queryOne("SELECT * FROM users WHERE Username=?", $username);
+    $username = $_SESSION["username"];
+    Db::connect("localhost", "sin", "root", "");
 
-if ($userData) {
-    $storedUsername = $userData['Username'];
-    $URL_username = $_GET['username'] ?? null;
-    if ($URL_username && $URL_username === $username) 
-    {
-        include("./MyProfile/MyProfile.php");
+    $userData = Db::queryOne("SELECT * FROM users WHERE Username=?", $username);
+
+    if ($userData) {
+        $storedUsername = $userData['Username'];
+        $URL_username = $_GET['username'] ?? null;
+        if ($URL_username && $URL_username === $username) 
+        {
+            include("./MyProfile/MyProfile.php");
+        } 
+        else 
+        {
+            include("./NotMyProfile/NotMyProfile.php");
+        }
     } 
     else 
     {
-        include("./NotMyProfile/NotMyProfile.php");
+        echo "User not found in the database.";
     }
-} 
-else 
-{
-    echo "User not found in the database.";
-}
-?>
+    ?>
+</body>
+</html>

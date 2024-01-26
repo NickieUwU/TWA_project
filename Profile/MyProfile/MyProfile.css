@@ -1,0 +1,37 @@
+.whereamI
+{
+    position: absolute;
+    top: 0%;
+    left: -0.05%;
+    border-bottom: 1px solid black;
+    color: #fff;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.lblMyProfile:hover
+{
+    cursor: pointer;
+}
+
+.User
+{
+    border: 1px solid black;
+    position: absolute;
+    left: 20%;
+    top: 9%;
+    color: #fff;
+    height: 90.5%;
+    width: 60%;
+}
+
+.PFP
+{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
