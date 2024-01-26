@@ -60,7 +60,6 @@
 
 .Posts .Username
 {
-    border: 1px solid black;
     position: absolute;
     top: 7.5%;
     left: 8%;
@@ -68,9 +67,8 @@
 
 .Posts .Post
 {
-    border: 1px solid black;
-    /*width: fit-content;*/
-    width: 90%;
+    width: fit-content;
+    max-width: 90%;
     height: fit-content;
     position: absolute;
     top: 12.5%;
