@@ -1,0 +1,17 @@
+<?php
+                    Db::connect("localhost", "sin", "root", "");
+                    $get_username = Db::query("SELECT ID FROM users WHERE Username=?", $_SESSION["username"]);
+                    if ($get_username !== false) 
+                    {
+                        // Fetch posts for the user
+                        $posts = Db::queryAll("SELECT * FROM posts WHERE ID=?", $get_username);
+                    
+                        if ($posts) 
+                        {
+                            foreach ($posts as $post) {
+                                $Content = $post['Content'];
+                                echo $Content;
+                            }
+                        }
+                    }
+                ?>

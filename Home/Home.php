@@ -6,6 +6,10 @@
     include_once("../ConnectionChecker.php");
 
     require("../Nav/Nav.php");
+
+    require("../DbHandler.php");
+    Db::connect("localhost", "sin", "root", "");
+    $get_username = Db::query("SELECT Username FROM users WHERE Username=?", $_SESSION["username"]);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +33,14 @@
             </script>
     </div>
     <div class="posts">
+             <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
+             <div class="Username">
+                <?php
+                    echo $get_username;
+                ?>
+             </div>
                 
+             
     </div>
 
 </body>
