@@ -19,6 +19,12 @@
     <link rel="stylesheet" href="Home.css">
 </head>
 <body>
-    
+    <div class="whereamI">
+            Home
+    </div>
+    <div class="posts">
+                
+    </div>
+
 </body>
 </html>
