@@ -20,7 +20,13 @@
 </head>
 <body>
     <div class="whereamI">
-            Home
+           <label onclick="refreshPage()" class="lblHome">Home</label>
+            <script>
+                function refreshPage() 
+                {
+                location.reload();
+                }
+            </script>
     </div>
     <div class="posts">
                 

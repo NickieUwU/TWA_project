@@ -9,6 +9,11 @@
     text-align: center;
 }
 
+.lblHome:hover
+{
+    cursor: pointer;
+}
+
 .posts
 {
     border: 1px solid black;
