@@ -10,18 +10,18 @@ $userData = Db::queryOne("SELECT * FROM users WHERE Username=?", $username);
 
 if ($userData) {
     $storedUsername = $userData['Username'];
-    
-    echo "Username from the database: $storedUsername";
-
-    // Get the username from the URL
     $URL_username = $_GET['username'] ?? null;
-
-    if ($URL_username && $URL_username === $username) {
+    if ($URL_username && $URL_username === $username) 
+    {
         include("MyProfile.php");
-    } else {
+    } 
+    else 
+    {
         include("NotMyProfile.php");
     }
-} else {
+} 
+else 
+{
     echo "User not found in the database.";
 }
 ?>

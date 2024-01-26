@@ -1,3 +1,8 @@
+<?php
+    include_once("../ConnectionChecker.php");
+
+    require("../Nav/Nav.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,6 @@
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
 </head>
 <body>
-    me
+    
 </body>
 </html>
