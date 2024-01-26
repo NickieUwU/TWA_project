@@ -22,6 +22,7 @@
                 $_username = $_POST["Username"];
                 $username = "@".$_username;
                 $password = $_POST["Password"];
+                $joined = date("Y-m-d");
 
                 if(isset($name) && isset($username) && isset($password))
                 {
@@ -35,7 +36,7 @@
                     else
                     {
                         $hspassword = password_hash($password, PASSWORD_DEFAULT);
-                        $data = array("name" => $name, "username" => $username, "password" => $hspassword);
+                        $data = array("name" => $name, "username" => $username, "password" => $hspassword, "joined" => $joined);
                         Db::insert("users", $data);
                         $_SESSION["username"] = $username;
                         header("Location: ../NewUserVerify/NewUserVerify.php");

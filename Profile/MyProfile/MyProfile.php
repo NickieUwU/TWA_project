@@ -8,6 +8,8 @@
     </div>
     <div class="User">
         <div class="Username">
-            <img src="DefaultPFP.png" class="PFP">
+            <?php
+                echo $username;
+            ?>
         </div>
     </div>

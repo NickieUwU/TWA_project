@@ -3,7 +3,7 @@
         Home
     </a><br>
     <a class="navmenu" href="../Home/Home.php">
-        Discover
+        Create
     </a><br>
     <a class="navmenu" href="../Home/Home.php">
         Messages

@@ -26,11 +26,15 @@
                 if(isset($username) && isset($password))
                 {
                     Db::connect("localhost", "sin", "root", "");
-                    $result = Db::query("SELECT * FROM Users WHERE Username=?", $username);
-                    if($result)
+                    $Users = Db::queryAll("SELECT * FROM Users WHERE Username=?", $username);
+                    if($Users)
                     {
-                        
+                        foreach($Users as $User)
+                        {
+                            $Name = $User["Name"];
+                        }
                         $_SESSION["username"] = $username;
+                        $_SESSION["name"] = $Name;
                         $_SESSION["login"] = true;
                         header("Location: ../Home/Home.php");
                         exit();

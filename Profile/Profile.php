@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./MyProfile/MyProfile.css">
 </head>
 <body>
+    <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
 
     <?php
     session_start();
