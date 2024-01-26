@@ -2,14 +2,18 @@
     error_reporting(E_ALL & ~E_WARNING);
     session_start();
     
-    // Check if the user is not logged in
     include_once("../ConnectionChecker.php");
 
     require("../Nav/Nav.php");
 
     require("../DbHandler.php");
     Db::connect("localhost", "sin", "root", "");
-    $get_username = Db::query("SELECT Username FROM users WHERE Username=?", $_SESSION["username"]);
+    $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
+    foreach($Users as $User)
+    {
+        $Name = $User["Name"];
+        $Username = $User["Username"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,19 +32,17 @@
             <script>
                 function refreshPage() 
                 {
-                location.reload();
+                    location.reload();
                 }
             </script>
     </div>
     <div class="posts">
              <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
-             <div class="Username">
+             <div class="Name">
                 <?php
-                    echo $get_username;
+                    echo "<a href='../Profile/Profile.php?username=$Username' class='Name'>$Name</a>";
                 ?>
              </div>
-                
-             
     </div>
 
 </body>
