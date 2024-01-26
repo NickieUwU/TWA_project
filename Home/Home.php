@@ -1,7 +1,5 @@
 <?php
-    error_reporting(E_ALL & ~E_WARNING);
     session_start();
-    
     include_once("../ConnectionChecker.php");
 
     require("../Nav/Nav.php");

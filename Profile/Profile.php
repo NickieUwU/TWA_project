@@ -13,11 +13,11 @@ if ($userData) {
     $URL_username = $_GET['username'] ?? null;
     if ($URL_username && $URL_username === $username) 
     {
-        include("MyProfile.php");
+        include("./MyProfile/MyProfile.php");
     } 
     else 
     {
-        include("NotMyProfile.php");
+        include("./NotMyProfile/NotMyProfile.php");
     }
 } 
 else 
