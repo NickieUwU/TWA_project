@@ -23,66 +23,46 @@
     <link rel="stylesheet" href="Profile.css">
 </head>
 <body>
-    <form method="post" action="Profile.php">
-        <?php
-            require("../Nav/Nav.php");
-        ?>
-        <div class="whereamI">
-            <label class="lblMyProfile">Profile</label>
+    <?php
+        require("../Nav/Nav.php");
+    ?>
+    <div class="whereamI">
+           <label class="lblMyProfile">Profile</label>
+    </div>
+    <div class="User">
+        <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
+        <div class="Name">
+            <?php
+                echo $name;
+            ?>
         </div>
-        <div class="User">
-            <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
-            <div class="Name">
-                <?php
-                    echo $name;
-                ?>
-            </div>
-            <div class="Username">
-                <?php
-                    echo $username;
-                ?>
-            </div>
-            <div class="Bio">
-                <?php
-                    echo $bio;
-                ?>
-            </div>
-            <div class="JoinedDate">
-                <?php echo "Joined $joined"; ?>
-            </div>
-            <div class="Action">
-                
-                        <?php
-                            if($_SESSION["username"] == $username)
-                            {
-                                echo "<input type='submit' name='edit' value='edit'>";
-                            }
-                            else
-                            {
-                                echo "<input type='submit' name='follow' value='follow'>";
-                            }
-                        ?>
-                    
-            </div>
+        <div class="Username">
+            <?php
+                echo $username;
+            ?>
         </div>
-    </form>
+        <div class="Bio">
+            <?php
+                echo $bio;
+            ?>
+        </div>
+        <div class="JoinedDate">
+            <?php echo "Joined $joined"; ?>
+        </div>
+        <div class="Action">
+                <?php
+                    if($_SESSION["username"] == $username)
+                    {
+                        echo "<a href='../ProfileEdit/ProfileEdit.php?username=$username'>
+                                <input type='submit' name='edit' id='IDedit' value='edit'>
+                            </a>";
+                    }
+                    else
+                    {
+                        echo "<input type='submit' name='follow' value='follow' onclick='follow()'>";
+                    }
+                ?>
+        </div>
+    </div>
 </body>
 </html>
-
-<?php
-    if($_POST)
-    {
-        $btnEdit = $_POST["edit"];
-        $btnFollow = $_POST["follow"];
-
-        if(isset($btnEdit))
-        {
-            echo "editing";
-        }
-
-        elseif(isset($btnFollow))
-        {
-            echo "following";
-        }
-    }
-?>
