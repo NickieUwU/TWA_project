@@ -1,12 +1,11 @@
 nav {
     text-align: left;
-    width: 10%; /* Set your desired width */
+    width: 10%;
     height: 100%;
-    border-right: 1px solid #000;
     position: fixed;
-    top: 0;
+    margin-top: 60px; /* Adjust the top margin value as needed */
     left: 0;
-    overflow-y: auto; /* Enable vertical scrolling if the content is too tall */
+    overflow-y: auto;
 }
 
 .navmenu {

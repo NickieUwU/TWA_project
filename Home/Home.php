@@ -69,6 +69,9 @@
                     echo $Content;
                 ?>
         </div>
+        <form action="Home.php" method="get">
+        <button type="submit" name="logout">Log out</button>
+    </form>
     </div>
 
 </body>

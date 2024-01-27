@@ -9,3 +9,19 @@
     width: 100%;
     text-align: center;
 }
+
+.EditNameDiv
+{
+    position: absolute;
+    top: 15%;
+    left: 40%;
+}
+
+.EditBioDiv
+{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    max-width: 300px;
+    max-height: 100px;
+}

@@ -2,7 +2,7 @@
     <a class="navmenu" href="../Home/Home.php">
         Home
     </a><br>
-    <a class="navmenu" href="../Home/Home.php">
+    <a class="navmenu" href="../CreatePost/CreatePost.php?username=<?php echo $_SESSION["username"];?>">
         Create
     </a><br>
     <a class="navmenu" href="../Home/Home.php">
@@ -11,9 +11,6 @@
     <a class="navmenu" href="../Profile/Profile.php?username=<?php echo $_SESSION["username"];?>">
         Profile
     </a><br>
-    <form action="Home.php" method="get">
-        <button type="submit" name="logout">Log out</button>
-    </form>
 
     <?php
         if (isset($_GET["logout"])) {
