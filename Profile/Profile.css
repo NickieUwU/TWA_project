@@ -67,5 +67,8 @@
 .User .Action
 {
     position: absolute;
-    border: 1px solid black;
+    top: 20%;
+    left: 35%;
+    height: fit-content;
+    width: fit-content;
 }
