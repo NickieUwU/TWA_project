@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
     <link rel="stylesheet" href="Profile.css">
+    <script src="Action.js"></script>
 </head>
 <body>
     <?php
@@ -53,11 +54,11 @@
                 <?php
                     if($_SESSION["username"] == $username)
                     {
-                        echo "<button type='button'>edit</button>";
+                        echo "<button type='button' onclick='edit'>edit</button>";
                     }
                     else
                     {
-                        echo "<button type='button'>follow</button>";
+                        echo "<button type='button' onclick='follow'>follow</button>";
                     }
                 ?>
         </div>
