@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require("../ConnectionChecker.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,37 +10,23 @@
     <title>Profile / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
-    <link rel="stylesheet" href="./MyProfile/MyProfile.css">
+    <link rel="stylesheet" href="Profile.css">
 </head>
 <body>
-    <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
-
     <?php
-    session_start();
-    include("../DbHandler.php");
-    require("../ConnectionChecker.php");
-
-    $username = $_SESSION["username"];
-    Db::connect("localhost", "sin", "root", "");
-
-    $userData = Db::queryOne("SELECT * FROM users WHERE Username=?", $username);
-
-    if ($userData) {
-        $storedUsername = $userData['Username'];
-        $URL_username = $_GET['username'] ?? null;
-        if ($URL_username && $URL_username === $username) 
-        {
-            include("./MyProfile/MyProfile.php");
-        } 
-        else 
-        {
-            include("./NotMyProfile/NotMyProfile.php");
-        }
-    } 
-    else 
-    {
-        echo "User not found in the database.";
-    }
+        require("../Nav/Nav.php");
     ?>
+    <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
+    <div class="whereamI">
+           <label class="lblMyProfile">Profile</label>
+    </div>
+    <div class="User">
+        <div class="Name">
+            Name
+        </div>
+        <div class="Username">
+            @Username
+        </div>
+    </div>
 </body>
 </html>
