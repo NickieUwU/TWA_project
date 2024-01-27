@@ -59,7 +59,9 @@
                     }
                     else
                     {
-                        echo "<input type='submit' name='follow' value='follow' onclick='follow()'>";
+                        echo "<form action='Profile.php?username=$username' method='post' id='IDform'>
+                                    <input type='submit' name='follow' value='follow'>
+                              </form>";
                     }
                 ?>
         </div>
