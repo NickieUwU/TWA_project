@@ -49,6 +49,18 @@
         <div class="JoinedDate">
             <?php echo "Joined $joined"; ?>
         </div>
+        <div class="Action">
+                <?php
+                    if($_SESSION["username"] == $username)
+                    {
+                        echo "<button type='button'>edit</button>";
+                    }
+                    else
+                    {
+                        echo "<button type='button'>follow</button>";
+                    }
+                ?>
+        </div>
     </div>
 </body>
 </html>

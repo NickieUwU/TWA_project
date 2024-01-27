@@ -63,3 +63,9 @@
     top: 25%;
     left: 30%;
 }
+
+.User .Action
+{
+    position: absolute;
+    border: 1px solid black;
+}
