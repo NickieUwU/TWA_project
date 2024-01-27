@@ -10,6 +10,8 @@
         $name = $User["Name"];
         $bio = $User["Bio"];
         $joined = $User["Joined"];
+        $followers = $User["Followers"];
+        $following = $User["Following"];
     }
 ?>
 <!DOCTYPE html>
@@ -55,15 +57,30 @@
                     {
                         echo "<a href='../ProfileEdit/ProfileEdit.php?username=$username'>
                                 <input type='submit' name='edit' id='IDedit' value='edit'>
-                            </a>";
+                              </a>";
                     }
                     else
                     {
                         echo "<form action='Profile.php?username=$username' method='post' id='IDform'>
-                                    <input type='submit' name='follow' value='follow'>
+                                <input type='submit' name='follow' value='follow'>
                               </form>";
                     }
                 ?>
+        </div>
+        <div class="Followers">
+            <?php
+                if($followers == 1)
+                {
+                    echo "$followers follower";
+                }
+                else
+                {
+                    echo "$followers followers";
+                }
+            ?>
+        </div>
+        <div class="Following">
+            <?php echo "$following following"; ?>
         </div>
     </div>
 </body>

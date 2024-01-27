@@ -51,7 +51,7 @@
 .User .Bio
 {
     position: absolute;
-    top: 35%;
+    top: 37%;
     left: 22%;
     max-width: 300px;
     max-height: 100px;
@@ -71,4 +71,30 @@
     left: 35%;
     height: fit-content;
     width: fit-content;
+}
+
+.User .Followers
+{
+    position: absolute;
+    top: 33%;
+    left: 22%;
+}
+
+.Followers:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.User .Following
+{
+    position: absolute;
+    top: 33%;
+    left: 35%;
+}
+
+.Following:hover
+{
+    cursor: pointer;
+    text-decoration: underline;
 }

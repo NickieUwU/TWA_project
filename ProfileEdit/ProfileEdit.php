@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    require("../ConnectionChecker.php");
+    require("../DbHandler.php");
+    $username = $_GET["username"];
+    if($_SESSION["username"] != $username)
+    {
+        header("location: ../Home/Home.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
