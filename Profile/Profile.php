@@ -2,13 +2,12 @@
     session_start();
     require("../ConnectionChecker.php");
     require("../DbHandler.php");
-    $username = $_GET['username'];
+    $username = $_GET['username']; //then grab $_SESSION and compare this to this username variable to see if it's me or not
     Db::connect("localhost", "sin", "root", "");
     $Users = Db::queryAll("SELECT * FROM  users WHERE Username=?", $username);
     foreach($Users as $User)
     {
         $name = $User["Name"];
-        $me = $User["Username"];
         $bio = $User["Bio"];
         $joined = $User["Joined"];
     }
@@ -46,6 +45,9 @@
             <?php
                 echo $bio;
             ?>
+        </div>
+        <div class="JoinedDate">
+            <?php echo "Joined $joined"; ?>
         </div>
     </div>
 </body>

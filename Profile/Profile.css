@@ -56,3 +56,10 @@
     max-width: 300px;
     max-height: 100px;
 }
+
+.User .JoinedDate
+{
+    position: absolute;
+    top: 25%;
+    left: 30%;
+}
