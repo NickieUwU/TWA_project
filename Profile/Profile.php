@@ -8,6 +8,9 @@
     foreach($Users as $User)
     {
         $name = $User["Name"];
+        $me = $User["Username"];
+        $bio = $User["Bio"];
+        $joined = $User["Joined"];
     }
 ?>
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile / Sin</title>
+    <title><?php echo "$name ($username)" ?> / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
     <link rel="stylesheet" href="Profile.css">
@@ -37,6 +40,11 @@
         <div class="Username">
             <?php
                 echo $username;
+            ?>
+        </div>
+        <div class="Bio">
+            <?php
+                echo $bio;
             ?>
         </div>
     </div>
