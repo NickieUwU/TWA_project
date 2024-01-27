@@ -68,3 +68,10 @@
     </div>
 </body>
 </html>
+
+<?php
+    if($_POST)
+    {
+        //following code
+    }
+?>
