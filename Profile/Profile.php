@@ -22,7 +22,7 @@
     <title><?php echo "$name ($username)" ?> / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="Profile.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php

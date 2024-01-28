@@ -49,7 +49,7 @@
     <div class="post">
         <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
         <div class="post-info">
-            <p class="name"><?php echo $Name; ?>/p>
+            <p class="name"><?php echo $Name; ?></p>
             <p class="handler"><?php echo $Username; ?></p>
             <p class="date">Post date creation</p>
         </div>

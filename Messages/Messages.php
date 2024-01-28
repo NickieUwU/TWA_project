@@ -13,7 +13,7 @@
     <title>Messages / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
-    <link rel="stylesheet" href="Messages.css">
+    <link rel="stylesheet" href="Messages.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php

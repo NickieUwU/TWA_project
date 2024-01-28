@@ -1,36 +1,43 @@
-.whereamI 
+.whereamI
 {
     position: absolute;
     top: 0%;
-    left: -0.05%;
-    border-bottom: 1px solid black;
+    left: 50%;
     color: #fff;
     font-size: 50px;
     width: 100%;
     text-align: center;
-}
-
-.PFP
-{
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    position: absolute;
-    top: 1%;
-    left: 1%;
+    width: fit-content;
 }
 
 .post {
+    position: relative;
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
     padding: 16px;
+    margin: 0 auto; /* Center the div horizontally */
+    width: 500px; /* Set a width for the div */
     margin-bottom: 16px;
+  }
+  
+  .pfp-container {
+    position: absolute;
+    top: -64px;
+    left: 16px;
+  }
+  
+  .pfp {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
   }
   
   .post-info {
     display: flex;
     flex-direction: column;
+    margin-top: 64px;
     margin-bottom: 16px;
   }
   
