@@ -1,6 +1,6 @@
 nav {
     text-align: left;
-    width: 10%;
+    width: 15%; /* Adjust as needed */
     height: 100%;
     position: fixed;
     margin-top: 60px; /* Adjust the top margin value as needed */
@@ -15,7 +15,7 @@ nav {
     background-color: #007bff;
     color: #fff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1.6vw; /* Use viewport width for responsive font size */
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -23,7 +23,6 @@ nav {
     width: fit-content;
 }
 
-.navmenu:hover
-{
+.navmenu:hover {
     background-color: #405bd4;
 }
