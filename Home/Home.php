@@ -56,9 +56,7 @@
         <div class="date">
             <p class="date"><?php echo $Date; ?></p>
         </div>
-        <div class="post-text">
-            <p><?php echo $Content; ?></p>
-        </div>
+        <textarea class="post-text" readonly><?php echo $Content; ?></textarea>
     </div>
 </body>
 </html>

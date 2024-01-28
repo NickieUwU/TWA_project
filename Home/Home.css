@@ -20,14 +20,16 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    border: 1px solid #ccc;
     padding: 16px;
     margin: 0 auto; /* Center the div horizontally */
-    width: 500px; /* Set a width for the div */
+    width: 400px; /* Set a width for the div */
+    height: fit-content;
     margin-bottom: 16px;
     top: 15%;
     left: 45%;
     color: #fff;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    border-radius: 10px;
   }
   
   .pfp-container {
@@ -48,7 +50,6 @@
     flex-direction: column;
     margin-top: 64px;
     margin-bottom: 16px;
-    border: 1px solid black;
     width: fit-content;
     position: absolute;
     left: 20%;
@@ -61,6 +62,18 @@
   
   .post-text {
     margin: 0;
+    background-color: transparent;
+    border: transparent;
+    height: 100px;
+    resize: none;
+    color: #fff;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .post-text:focus
+  {
+    border: transparent;
   }
 
   .date
