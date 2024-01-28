@@ -14,13 +14,9 @@
     border-radius: 10px;
   }
   
-  .pfp-container {
-    position: absolute;
-    top: -64px;
-    left: 16px;
-  }
   
-  .pfp {
+  .PFP
+   {
     width: 64px;
     height: 64px;
     border-radius: 50%;
