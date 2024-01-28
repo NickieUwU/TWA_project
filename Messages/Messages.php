@@ -1,26 +1,22 @@
 <?php
     session_start();
-    $username = $_GET["username"];
-    require("../DbHandler.php");
     require("../ConnectionChecker.php");
-    require("../ValidateUser.php");
+    require("../DbHandler.php");
+    $username = $_GET["username"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create / Sin</title>
+    <title>Messages / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
-    <link rel="stylesheet" href="CreatePost.css">
+    <link rel="stylesheet" href="Messages.css">
 </head>
 <body>
     <?php
         include("../Nav/Nav.php");
     ?>
-    <div class="whereamI">
-           <label class="lblMyProfile">Create post</label>
-    </div>
 </body>
 </html>
