@@ -4,30 +4,28 @@
     include("../Nav/Nav.php");
     require("../DbHandler.php");
     Db::connect("localhost", "sin", "root", "");
-    $Posts = Db::queryAll("SELECT * FROM posts");
-    if (!empty($Posts)) 
+
+    // Get a random user ID
+    $Users = Db::queryAll("SELECT ID FROM users ORDER BY RAND() LIMIT 1");
+    foreach($Users as $User)
     {
-        // Randomly select an index from the array of users
-        $randomIndex = array_rand($Posts);
-
-        // Get the user at the randomly selected index
-        $randomPost = $Posts[$randomIndex];
-
-        // Extract the ID from the randomly selected user
-        $ID = $randomPost["ID"];
+        $ID = $User["ID"];
     }
-    
+
+    // Get a random post from the user
+    $Posts = Db::queryAll("SELECT * FROM posts WHERE ID=? ORDER BY RAND() LIMIT 1", $ID);
+    foreach($Posts as $Post)
+    {
+        $Content = $Post["Content"];
+        $Date = $Post["PostCreation"];
+    }
+
+    // Get the user's name and username
     $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
     foreach($Users as $User)
     {
         $Name = $User["Name"];
         $Username = $User["Username"];
-    }
-    $Posts = Db::queryAll("SELECT * FROM posts WHERE ID=?", $ID);
-    foreach($Posts as $Post)
-    {
-        $Content = $Post["Content"];
-        $Date = $Post["PostCreation"];
     }
 ?>
 
