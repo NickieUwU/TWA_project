@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include_once("../ConnectionChecker.php");
-    require("../Nav/Nav.php");
+    require("../ConnectionChecker.php");
+    include("../Nav/Nav.php");
     require("../DbHandler.php");
     Db::connect("localhost", "sin", "root", "");
     $Users = Db::queryAll("SELECT * FROM users");
@@ -37,17 +37,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../Nav/Nav.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
+    <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
 </head>
 <body>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
-        crossorigin="anonymous">
-    </script>
 </body>
 </html>

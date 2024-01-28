@@ -3,7 +3,6 @@ nav {
     width: 15%; /* Adjust as needed */
     height: 100%;
     position: fixed;
-    margin-top: 60px; /* Adjust the top margin value as needed */
     left: 0;
     overflow-y: auto;
 }

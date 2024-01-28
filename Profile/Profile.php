@@ -21,7 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo "$name ($username)" ?> / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
-    <link rel="stylesheet" href="../Nav/Nav.css">
+    <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Profile.css">
 </head>
 <body>
