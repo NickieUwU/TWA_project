@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Post/Post.css?v=<?php echo time(); ?>">
-
+    <link rel="stylesheet" href="Home.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>

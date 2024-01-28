@@ -10,8 +10,8 @@
   }
   
   @media screen and (max-width: 768px) {
-    .whereamI {
-      position: relative;
+    .whereamI
+    {
       font-size: 10px;
     }
   }

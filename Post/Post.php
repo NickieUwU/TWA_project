@@ -17,7 +17,6 @@
         $Date = $Post["PostCreation"];
     }
 
-    // Get the user's name and username
     $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
     foreach($Users as $User)
     {
@@ -36,4 +35,7 @@
             <p class="date"><?php echo $Date; ?></p>
         </div>
         <textarea class="post-text" readonly><?php echo $Content; ?></textarea>
+        <div class="actions">
+            <i class="bi bi-heart"></i>
+        </div>
     </div>
