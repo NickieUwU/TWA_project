@@ -38,7 +38,13 @@
         if($Content != "")
         {
             Db::connect("localhost", "sin", "root", "");
-            
+            $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $username);
+            foreach($Users as $User)
+            {
+                $ID = $User["ID"];
+            }
+            $data = array("ID" => $ID, "Content" => $Content);
+            Db::insert("posts", $data);
         }
         else
         {
