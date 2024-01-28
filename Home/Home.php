@@ -27,6 +27,7 @@
     foreach($Posts as $Post)
     {
         $Content = $Post["Content"];
+        $Date = $Post["PostCreation"];
     }
 ?>
 
@@ -50,7 +51,10 @@
         <div class="post-info">
             <p class="name"><?php echo $Name; ?></p>
             <p class="handler"><?php echo $Username; ?></p>
-            <p class="date">Post date creation</p>
+            
+        </div>
+        <div class="date">
+            <p class="date"><?php echo $Date; ?></p>
         </div>
         <div class="post-text">
             <p><?php echo $Content; ?></p>

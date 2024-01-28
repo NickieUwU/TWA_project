@@ -9,6 +9,12 @@
     text-align: center;
     width: fit-content;
 }
+@media screen and (max-width: 768px) {
+    .whereamI {
+      position: relative;
+      font-size: 10px;
+    }
+  }
 .CreatePost
 {
     border: 1px solid black;

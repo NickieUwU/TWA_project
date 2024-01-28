@@ -1,14 +1,20 @@
-.whereamI
-{
+.whereamI {
     position: absolute;
     top: 0%;
-    left: -0.05%;
-    border-bottom: 1px solid black;
+    left: 50%;
     color: #fff;
     font-size: 50px;
     width: 100%;
     text-align: center;
-}
+    width: fit-content;
+  }
+
+@media screen and (max-width: 768px) {
+    .whereamI {
+      position: relative;
+      font-size: 10px;
+    }
+  }
 
 .EditNameDiv
 {
