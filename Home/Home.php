@@ -6,7 +6,31 @@
 
     require("../DbHandler.php");
     Db::connect("localhost", "sin", "root", "");
+    $Users = Db::queryAll("SELECT * FROM users");
     
+    if (!empty($Users)) 
+    {
+        // Randomly select an index from the array of users
+        $randomIndex = array_rand($Users);
+
+        // Get the user at the randomly selected index
+        $randomUser = $Users[$randomIndex];
+
+        // Extract the ID from the randomly selected user
+        $ID = $randomUser["ID"];
+    }
+    
+    $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
+    foreach($Users as $User)
+    {
+        $Name = $User["Name"];
+        $Username = $User["Username"];
+    }
+    $Posts = Db::queryAll("SELECT * FROM posts WHERE ID=?", $ID);
+    foreach($Posts as $Post)
+    {
+        $Content = $Post["Content"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -31,23 +55,23 @@
     </div>
     <div class="Posts">
         <?php
-            /*echo "<a href='../Profile/Profile.php?username=$Username'>
+            echo "<a href='../Profile/Profile.php?username=$Username'>
                     <img src='../DefaultPFP/DefaultPFP.png' class='PFP'>
-                  </a>";*/
+                  </a>";
         ?>
         <div class="Name">
            <?php
-               //echo "<a href='../Profile/Profile.php?username=$Username' class='Name'>$Name</a>";
+               echo "<a href='../Profile/Profile.php?username=$Username' class='Name'>$Name</a>";
            ?>
         </div>
         <div class="Username">
            <?php
-              //echo $Username;
+              echo $Username;
            ?>
         </div>
         <div class="Post">
                 <?php 
-                    //echo $Content;
+                    echo $Content;
                 ?>
         </div>
         <form action="Home.php" method="get">
