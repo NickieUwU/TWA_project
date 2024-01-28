@@ -3,6 +3,7 @@
     require("../ConnectionChecker.php");
     require("../DbHandler.php");
     $username = $_GET["username"];
+    require("../ValidateUser.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,5 +19,8 @@
     <?php
         include("../Nav/Nav.php");
     ?>
+    <div class="whereamI">
+           <label class="lblMyProfile">Messages</label>
+    </div>
 </body>
 </html>

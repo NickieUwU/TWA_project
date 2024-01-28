@@ -13,7 +13,7 @@
     <title>Create / Sin</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css">
-    <link rel="stylesheet" href="CreatePost.css">
+    <link rel="stylesheet" href="CreatePost.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php
@@ -22,5 +22,27 @@
     <div class="whereamI">
            <label class="lblMyProfile">Create post</label>
     </div>
+    <div class="CreatePost">
+        <form action="CreatePost.php?username=<?php echo $_SESSION["username"]; ?>" method="post">
+            <textarea class="txtContent" name="txtContent" placeholder="What's happening?"></textarea>
+            <input type="submit" value="Post" class="btnSubmit">
+        </form>
+    </div>
 </body>
 </html>
+
+<?php
+    if($_POST)
+    {
+        $Content = $_POST["txtContent"];
+        if($Content != "")
+        {
+            Db::connect("localhost", "sin", "root", "");
+            
+        }
+        else
+        {
+            exit;
+        }
+    }
+?>

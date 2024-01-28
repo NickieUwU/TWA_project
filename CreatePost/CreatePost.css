@@ -9,3 +9,41 @@
     width: 100%;
     text-align: center;
 }
+
+.CreatePost
+{
+    border: 1px solid black;
+    position: absolute;
+    left: 20%;
+    top: 9%;
+    color: #fff;
+    height: 90.5%;
+    width: 60%;
+}
+
+.CreatePost .txtContent
+{
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border-color: black;
+    border-radius: 5%;
+    color: #fff;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 300px;
+    height: max-content; 
+}
+
+.txtContent::placeholder
+{
+    color: #fff;
+}
+
+.CreatePost .btnSubmit
+{
+    position: absolute;
+    top: 11%;
+    left: 53%;
+}
