@@ -1,5 +1,4 @@
-.whereamI
-{
+.whereamI {
     position: absolute;
     top: 0%;
     left: 50%;
@@ -8,10 +7,17 @@
     width: 100%;
     text-align: center;
     width: fit-content;
-}
-
-.post {
-    position: relative;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .whereamI {
+      position: relative;
+      font-size: xx-small;
+    }
+  }
+  
+  .post {
+    position: absolute;
     display: flex;
     flex-direction: column;
     border: 1px solid #ccc;
@@ -19,6 +25,9 @@
     margin: 0 auto; /* Center the div horizontally */
     width: 500px; /* Set a width for the div */
     margin-bottom: 16px;
+    top: 15%;
+    left: 45%;
+    color: #fff;
   }
   
   .pfp-container {

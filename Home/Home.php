@@ -4,18 +4,17 @@
     include("../Nav/Nav.php");
     require("../DbHandler.php");
     Db::connect("localhost", "sin", "root", "");
-    $Users = Db::queryAll("SELECT * FROM users");
-    
-    if (!empty($Users)) 
+    $Posts = Db::queryAll("SELECT * FROM posts");
+    if (!empty($Posts)) 
     {
         // Randomly select an index from the array of users
-        $randomIndex = array_rand($Users);
+        $randomIndex = array_rand($Posts);
 
         // Get the user at the randomly selected index
-        $randomUser = $Users[$randomIndex];
+        $randomPost = $Posts[$randomIndex];
 
         // Extract the ID from the randomly selected user
-        $ID = $randomUser["ID"];
+        $ID = $randomPost["ID"];
     }
     
     $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
@@ -39,7 +38,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="Home.css">
+    <link rel="stylesheet" href="Home.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <div class="whereamI">
