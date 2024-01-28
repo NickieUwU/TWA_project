@@ -39,8 +39,23 @@
     <title>Document</title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="Home.css">
 </head>
 <body>
-    
+    <div class="whereamI">
+        <label class="lblMyProfile">Home</label>
+    </div>
+
+    <div class="post">
+        <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
+        <div class="post-info">
+            <p class="name"><?php echo $Name; ?>/p>
+            <p class="handler"><?php echo $Username; ?></p>
+            <p class="date">Post date creation</p>
+        </div>
+        <div class="post-text">
+            <p><?php echo $Content; ?></p>
+        </div>
+    </div>
 </body>
 </html>
