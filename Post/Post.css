@@ -12,9 +12,7 @@
     color: #fff;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
     border-radius: 10px;
-  }
-  
-  
+  }  
   
   .PFP
    {
@@ -72,6 +70,12 @@
     display: flex;
     align-items: center;
   }
+
+  .post .actions
+  {
+    position: absolute;
+    left: 5%;
+  }
   .actions i 
   {
     font-size: 24px;
@@ -79,9 +83,6 @@
     margin-right: 16px;
     cursor: pointer;
     transition: color 0.3s ease;
+    height: fit-content;
+    width: fit-content;
   }
-
-.actions i:hover 
-{
-    color: #ff0000;
-}

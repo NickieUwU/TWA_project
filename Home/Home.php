@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Post/Post.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Home.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>
