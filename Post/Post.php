@@ -36,20 +36,7 @@
     {
         $IsLiked = $Like["Liked"];
     }
-
-    function liked($IsLiked, $LoggedID, $Post_ID)
-    {
-        if($IsLiked == 0)
-            {
-                $IsLiked == 1;
-                Db::query("INSERT INTO likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
-            }
-            if($IsLiked == 1)
-            {
-                $IsLiked = 0;
-            }
-    }
-
+    echo $IsLiked;
 ?>
 <div class="post">
     <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
@@ -64,19 +51,43 @@
     <textarea class="post-text" readonly><?php echo $Content; ?></textarea>
     <div class="actions" id="actionID">
         <div class="heart" id="heart">
-            <?php
-            if($IsLiked == 0) {
-                echo "<i class='bi bi-heart' id='likeIcon' onclick='ExecuteLike()'></i>";
+        <?php
+            if ($IsLiked == 0) {
+                $BtnText = "like";
+                echo '<form action="Home.php" method="post">
+                        <button type="submit" class="btnHeart">'.$BtnText.'</button>
+                    </form>';
             }
-            if($IsLiked == 1) {
-                echo "<i class='bi bi-heart-fill' id='likeIcon' onclick='ExecuteLike()'></i>";
+
+            if ($IsLiked == 1) {
+                $BtnText = "liked";
+                echo '<form action="Home.php" method="post">
+                        <button type="submit" class="btnHeart">'.$BtnText.'</button>
+                    </form>';
             }
-            ?>  
+        ?>
+
         </div>
         <div class="comments">
-           <a href="../ExpandedPost/ExpandedPost.php/<?php echo $Post_ID?>">
+           <a href="../ExpandedPost/ExpandedPost.php?Post=<?php echo $Post_ID?>">
                 <i class="bi bi-chat-left-dots-fill"></i>
            </a> 
         </div>
     </div>
 </div>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if($IsLiked == 0)
+    {
+        $IsLiked = 1;
+        $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
+        Db::insert("likes", $data);
+    }
+    else
+    {
+        $IsLiked = 0;
+        Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
+    }
+}
+?>
