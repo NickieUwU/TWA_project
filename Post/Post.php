@@ -36,7 +36,8 @@
     {
         $IsLiked = $Like["Liked"];
     }
-    $BtnText = "like";
+
+    $BtnText;
     echo $IsLiked;
 ?>
 
@@ -53,6 +54,16 @@
     <textarea class="post-text" readonly><?php echo $Content; ?></textarea>
     <div class="actions" id="actionID">
         <div class="heart" id="heart">
+            <?php
+                if($IsLiked == 0)
+                {
+                    $BtnText = "like";
+                }
+                else if($IsLiked == 1)
+                {
+                    $BtnText = "liked";
+                }
+            ?>
         
         <form action="Home.php" method="post" id="likeForm">
             <button id="btnHeartID" class="btnHeart"><?php echo $BtnText; ?></button>
