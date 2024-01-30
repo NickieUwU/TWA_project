@@ -36,8 +36,10 @@
     {
         $IsLiked = $Like["Liked"];
     }
+    $BtnText = "like";
     echo $IsLiked;
 ?>
+
 <div class="post">
     <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
     <div class="post-info">
@@ -52,20 +54,9 @@
     <div class="actions" id="actionID">
         <div class="heart" id="heart">
         
-            <form action="Home.php" method="post">
-            <?php
-                if ($IsLiked == 0) 
-                {
-                    $BtnText = "like";
-                }
-
-                elseif ($IsLiked == 1) 
-                {
-                    $BtnText = "liked";
-                }
-            ?>
-                <button type="submit" class="btnHeart"><?php echo $BtnText; ?></button>
-            </form>
+        <form action="Home.php" method="post" id="likeForm">
+            <button id="btnHeartID" class="btnHeart"><?php echo $BtnText; ?></button>
+        </form>
 
         </div>
         <div class="comments">
@@ -75,6 +66,26 @@
         </div>
     </div>
 </div>
+<script>
+document.getElementById('likeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var form = event.target;
+    var formData = new FormData(form);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action, true);
+    xhr.onload = function() {
+        if (this.status == 200) {
+            // Update the 'IsLiked' status and button text
+            var btnHeart = document.getElementById('btnHeartID');
+            btnHeart.value = this.responseText == '1' ? 'liked' : 'like';
+            btnHeart.dataset.liked = this.responseText;
+        }
+    };
+    xhr.send(formData);
+});
+</script>
 
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -83,13 +94,14 @@
             $IsLiked = 1;
             $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
             Db::insert("likes", $data);
-            $BtnText = "liked";
+            echo '1';
         }
         else
         {
             $IsLiked = 0;
             Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
-            $BtnText = "like";
+            echo '0';
         }
+        exit;
     }
 ?>
