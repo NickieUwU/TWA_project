@@ -23,6 +23,11 @@
     border: 1px solid black;
   }
   
+  .PFP:hover
+  {
+    cursor: pointer;
+  }
+  
   .post-info {
     flex-direction: column;
     margin-top: 64px;
@@ -35,6 +40,12 @@
   
   .name, .handler, .date {
     margin: 0;
+  }
+
+  .name:hover
+  {
+    cursor: pointer;
+    text-decoration: underline;
   }
   
   .post-text {
@@ -85,4 +96,15 @@
     transition: color 0.3s ease;
     height: fit-content;
     width: fit-content;
+  }
+
+  .post .comments
+  {
+    position: absolute;
+    left: 20%;
+  }
+
+  .btnHeart:hover
+  {
+    cursor: pointer;
   }

@@ -51,21 +51,21 @@
     <textarea class="post-text" readonly><?php echo $Content; ?></textarea>
     <div class="actions" id="actionID">
         <div class="heart" id="heart">
-        <?php
-            if ($IsLiked == 0) {
-                $BtnText = "like";
-                echo '<form action="Home.php" method="post">
-                        <button type="submit" class="btnHeart">'.$BtnText.'</button>
-                    </form>';
-            }
+        
+            <form action="Home.php" method="post">
+            <?php
+                if ($IsLiked == 0) 
+                {
+                    $BtnText = "like";
+                }
 
-            if ($IsLiked == 1) {
-                $BtnText = "liked";
-                echo '<form action="Home.php" method="post">
-                        <button type="submit" class="btnHeart">'.$BtnText.'</button>
-                    </form>';
-            }
-        ?>
+                elseif ($IsLiked == 1) 
+                {
+                    $BtnText = "liked";
+                }
+            ?>
+                <button type="submit" class="btnHeart"><?php echo $BtnText; ?></button>
+            </form>
 
         </div>
         <div class="comments">
@@ -77,17 +77,19 @@
 </div>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if($IsLiked == 0)
-    {
-        $IsLiked = 1;
-        $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
-        Db::insert("likes", $data);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+        if($IsLiked == 0)
+        {
+            $IsLiked = 1;
+            $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
+            Db::insert("likes", $data);
+            $BtnText = "liked";
+        }
+        else
+        {
+            $IsLiked = 0;
+            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
+            $BtnText = "like";
+        }
     }
-    else
-    {
-        $IsLiked = 0;
-        Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
-    }
-}
 ?>
