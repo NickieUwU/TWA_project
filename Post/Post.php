@@ -3,20 +3,19 @@
     Db::connect("localhost", "sin", "root", "");
 
     // Get a random user ID
-    $Users = Db::queryAll("SELECT ID FROM users ORDER BY RAND() LIMIT 1");
-    foreach($Users as $User)
-    {
-        $ID = $User["ID"];
-    }
+
 
     // Get a random post from the user
-    $Posts = Db::queryAll("SELECT * FROM posts WHERE ID=? ORDER BY RAND() LIMIT 1", $ID);
+    $Posts = Db::queryAll("SELECT * FROM posts ORDER BY RAND() LIMIT 1");
     foreach($Posts as $Post)
     {
         $Post_ID = $Post["Post_ID"];
+        $ID = $Post["ID"];
         $Content = $Post["Content"];
         $Date = $Post["PostCreation"];
     }
+
+    $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
 
     $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
     foreach($Users as $User)
@@ -38,7 +37,6 @@
     }
 
     $BtnText;
-    echo $IsLiked;
 ?>
 
 <div class="post">
@@ -88,7 +86,6 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
     xhr.open(form.method, form.action, true);
     xhr.onload = function() {
         if (this.status == 200) {
-            // Update the 'IsLiked' status and button text
             var btnHeart = document.getElementById('btnHeartID');
             btnHeart.value = this.responseText == '1' ? 'liked' : 'like';
             btnHeart.dataset.liked = this.responseText;
