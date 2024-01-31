@@ -38,43 +38,44 @@
 
     $BtnText;
 ?>
-
-<div class="post">
-    <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
-    <div class="post-info">
-        <p class="name"><?php echo $Name; ?></p>
-        <p class="handler"><?php echo $Username; ?></p>
-        
-    </div>
-    <div class="date">
-        <p class="date"><?php echo $Date; ?></p>
-    </div>
-    <textarea class="post-text" readonly><?php echo $Content; ?></textarea>
-    <div class="actions" id="actionID">
-        <div class="heart" id="heart">
-            <?php
-                if($IsLiked == 0)
-                {
-                    $BtnText = "like";
-                }
-                else if($IsLiked == 1)
-                {
-                    $BtnText = "liked";
-                }
-            ?>
-        
-        <form action="Home.php" method="post" id="likeForm">
-            <button id="btnHeartID" class="btnHeart"><?php echo $BtnText; ?></button>
-        </form>
-
+<form action="Home.php" method="post" id="likeForm">
+    <div class="post">
+        <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
+        <div class="post-info">
+            <p class="name"><?php echo $Name; ?></p>
+            <p class="handler" name="PostUsername"><?php echo $Username; ?></p>
+            
         </div>
-        <div class="comments">
-           <a href="../ExpandedPost/ExpandedPost.php?Post=<?php echo $Post_ID?>">
-                <i class="bi bi-chat-left-dots-fill"></i>
-           </a> 
+        <div class="date">
+            <p class="date"><?php echo $Date; ?></p>
         </div>
-    </div>
-</div>
+        <textarea class="post-text" name="PostContent" readonly><?php echo $Content; ?></textarea>
+        <div class="actions" id="actionID">
+            <div class="heart" id="heart">
+                <?php
+                    if($IsLiked == 0)
+                    {
+                        $BtnText = "like";
+                    }
+                    else if($IsLiked == 1)
+                    {
+                        $BtnText = "liked";
+                    }
+                ?>
+            
+            
+                <button id="btnHeartID" class="btnHeart"><?php echo $BtnText; ?></button>
+        
+
+            </div>
+            <div class="comments">
+            <a href="../ExpandedPost/ExpandedPost.php?Post=<?php echo $Post_ID?>">
+                    <i class="bi bi-chat-left-dots-fill"></i>
+            </a> 
+            </div>
+        </div>
+    </div> 
+</form>
 <script>
 document.getElementById('likeForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -85,10 +86,9 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
     var xhr = new XMLHttpRequest();
     xhr.open(form.method, form.action, true);
     xhr.onload = function() {
-        if (this.status == 200) {
-            var btnHeart = document.getElementById('btnHeartID');
-            btnHeart.value = this.responseText == '1' ? 'liked' : 'like';
-            btnHeart.dataset.liked = this.responseText;
+        if (this.status == 200) 
+        {
+            //Button text change    
         }
     };
     xhr.send(formData);
@@ -102,14 +102,11 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
             $IsLiked = 1;
             $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
             Db::insert("likes", $data);
-            echo '1';
         }
         else
         {
             $IsLiked = 0;
-            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
-            echo '0';
+            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $Post_ID, $IsLiked);
         }
-        exit;
     }
 ?>
