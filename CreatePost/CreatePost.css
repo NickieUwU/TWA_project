@@ -31,13 +31,14 @@
 
 .CreatePost .txtContent {
     width: 98%;
+    height: 50%;
     background-color: transparent;
     border: 1px solid black;
     border-radius: 5px;
     color: #fff;
     resize: none;
-    margin-bottom: 10px; /* Add margin for better appearance */
-    padding: 10px; /* Add padding for better appearance */
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 .txtContent::placeholder {
@@ -45,7 +46,16 @@
 }
 
 .CreatePost .btnSubmit {
-    width: 100%; /* Make the button width 100% */
-    padding: 10px; /* Add padding for better appearance */
+    width: 10%;
+    padding: 10px;
     box-sizing: border-box;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btnSubmit:hover
+{
+    cursor: pointer;
 }
