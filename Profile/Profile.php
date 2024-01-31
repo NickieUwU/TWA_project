@@ -7,13 +7,19 @@
     $Users = Db::queryAll("SELECT * FROM  users WHERE Username=?", $username);
     foreach($Users as $User)
     {
+        $ID = $User["ID"];
         $name = $User["Name"];
         $bio = $User["Bio"];
         $joined = $User["Joined"];
         $followers = $User["Followers"];
         $following = $User["Following"];
     }
-    $follows = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=?", $username, $_SESSION["username"]);
+    $LoggedUsers = Db::queryAll("SELECT * FROM USERS WHERE ID=?", $_SESSION["username"]);
+    foreach($LoggedUsers as $LoggedUser)
+    {
+        $LoggedID = $LoggedUser["ID"];
+    }
+    $follows = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=?", $ID, $LoggedID);
     if($follows)
     {
         foreach($follows as $follow)
@@ -65,6 +71,14 @@
         </div>
         <div class="Action">
                 <?php
+                    if($IsFollowed == 0)
+                    {
+                        $FollowText = "follow";
+                    }
+                    if($IsFollowed == 1)
+                    {
+                        $FollowText = "unfollow";
+                    }
                     if($_SESSION["username"] == $username)
                     {
                         echo "<a href='../ProfileEdit/ProfileEdit.php?username=$username'>
@@ -74,7 +88,7 @@
                     else
                     {
                         echo "<form action='Profile.php?username=$username' method='post' id='IDform'>
-                                <input type='submit' name='follow' value='follow'>
+                                <input type='submit' name='follow' value='$FollowText'>
                               </form>";
                     }
                 ?>
@@ -101,11 +115,22 @@
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $followers++;
-        $following++;
-        $dataFollowing = array("Following" => $following);
-        Db::update("users", $dataFollowing, "WHERE ID=?", $_SESSION["username"]);
-        $dataFollower = array("Followers" => $followers);
-        Db::update("users", $dataFollower, "WHERE username=?", $username);
+        if($IsFollowed == 0)
+        {
+            $followers++;
+            $following++;
+            $IsFollowed = 1;
+            $dataFollowing = array("Following" => $following);
+            Db::update("users", $dataFollowing, "WHERE ID=?", $LoggedID);
+            $dataFollower = array("Followers" => $followers);
+            Db::update("users", $dataFollower, "WHERE ID=?", $ID);
+            $followdata = array("ID" => $ID, "LoggedID" => $LoggedID);
+            Db::insert("follow", $followdata);
+        }
+        if($IsFollowed == 1)
+        {
+            Db::query("DELETE FROM follow WHERE ID=? AND LoggedID=? AND IsFollowed=?", $ID, $LoggedID, $IsFollowed);
+            $IsFollowed = 0;
+        }
     }
 ?>
