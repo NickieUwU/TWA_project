@@ -29,16 +29,25 @@
     {
         $LoggedID = $LoggedUser["ID"];
     }
-    $IsLiked = "0";
     $Likes = Db::queryAll("SELECT * FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
-    foreach($Likes as $Like)
+    if($Likes)
     {
-        $IsLiked = $Like["Liked"];
+        foreach($Likes as $Like)
+        {
+            $IsLiked = $Like["Liked"];
+        } 
     }
-
+    else
+    {
+        $IsLiked = "0";
+    }
+    
     $BtnText;
 ?>
 <form action="Home.php" method="post" id="likeForm">
+    <!-- Pass the Post_ID in a hidden input field -->
+    <input type="hidden" name="Post_ID" value="<?php echo $Post_ID; ?>">
+
     <div class="post">
         <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
         <div class="post-info">
@@ -76,6 +85,29 @@
         </div>
     </div> 
 </form>
+
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    { 
+        $Post_ID = $_POST["Post_ID"];
+
+        if($IsLiked == 0)
+        {
+            $IsLiked = 1;
+            $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
+            Db::insert("likes", $data);
+        }
+        else if($IsLiked == 1)
+        {
+            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $Post_ID, $IsLiked);
+            $IsLiked = 0;
+        }
+
+        // Fetch the like status again after the update
+        $Likes = Db::queryAll("SELECT * FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
+        $IsLiked = count($Likes) > 0 ? $Likes[0]["Liked"] : 0;
+    }
+?>
 <script>
 document.getElementById('likeForm').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -88,34 +120,10 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
     xhr.onload = function() {
         if (this.status == 200) 
         {
-              var btnHeart =document.getElementById("btnHeartID");
-
-              if(btnHeart.innerText == "like")
-              {
-                btnHeart.innerText = "liked";
-              }
-              if(btnHeart == "liked")
-              {
-                btnHeart = "like";
-              }
+            var btnHeart = document.getElementById("btnHeartID");
+            btnHeart.innerText = (btnHeart.innerText === "like") ? "liked" : "like";
         }
     };
     xhr.send(formData);
 });
 </script>
-
-<?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
-        if($IsLiked == 0)
-        {
-            $IsLiked = 1;
-            $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
-            Db::insert("likes", $data);
-        }
-        if($IsLiked == 1)
-        {
-            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $Post_ID, $IsLiked);
-            $IsLiked = 0;
-        }
-    }
-?>
