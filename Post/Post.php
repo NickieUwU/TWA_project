@@ -45,7 +45,6 @@
     $BtnText;
 ?>
 <form action="Home.php" method="post" id="likeForm">
-    <!-- Pass the Post_ID in a hidden input field -->
     <input type="hidden" name="Post_ID" value="<?php echo $Post_ID; ?>">
 
     <div class="post">
