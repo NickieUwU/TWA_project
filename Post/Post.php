@@ -99,6 +99,7 @@
         else if($IsLiked == 1)
         {
             Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, $IsLiked);
+            $IsLiked = 0;
         }
     }
 ?>

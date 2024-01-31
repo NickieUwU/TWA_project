@@ -22,12 +22,12 @@
     <div class="whereamI">
            <label class="lblMyProfile">Create post</label>
     </div>
-    <div class="CreatePost">
-        <form action="CreatePost.php?username=<?php echo $_SESSION["username"]; ?>" method="post">
+    <form action="CreatePost.php?username=<?php echo $_SESSION["username"]; ?>" method="post">
+        <div class="CreatePost">
             <textarea class="txtContent" name="txtContent" placeholder="What's happening?"></textarea>
             <input type="submit" value="Post" class="btnSubmit">
-        </form>
-    </div>
+        </div>
+    </form>
 </body>
 </html>
 

@@ -1,5 +1,4 @@
-.whereamI
-{
+.whereamI {
     position: absolute;
     top: 0%;
     left: 50%;
@@ -9,46 +8,44 @@
     text-align: center;
     width: fit-content;
 }
+
 @media screen and (max-width: 768px) {
     .whereamI {
-      position: relative;
-      font-size: 10px;
+        position: relative;
+        font-size: 20px;
     }
-  }
-.CreatePost
-{
+}
+
+.CreatePost {
     border: 1px solid black;
     position: absolute;
-    left: 20%;
-    top: 9%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     color: #fff;
-    height: 90.5%;
-    width: 60%;
+    height: 60%;
+    width: 70%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.CreatePost .txtContent
-{
-    width: fit-content;
-    height: fit-content;
+.CreatePost .txtContent {
+    width: 98%;
     background-color: transparent;
-    border-color: black;
-    border-radius: 5%;
+    border: 1px solid black;
+    border-radius: 5px;
     color: #fff;
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 300px;
-    height: max-content; 
+    resize: none;
+    margin-bottom: 10px; /* Add margin for better appearance */
+    padding: 10px; /* Add padding for better appearance */
 }
 
-.txtContent::placeholder
-{
+.txtContent::placeholder {
     color: #fff;
 }
 
-.CreatePost .btnSubmit
-{
-    position: absolute;
-    top: 11%;
-    left: 53%;
+.CreatePost .btnSubmit {
+    width: 100%; /* Make the button width 100% */
+    padding: 10px; /* Add padding for better appearance */
+    box-sizing: border-box;
 }
