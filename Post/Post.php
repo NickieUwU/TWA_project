@@ -88,23 +88,18 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     { 
-        $Post_ID = $_POST["Post_ID"];
+        $PostID = $_POST["Post_ID"];
 
         if($IsLiked == 0)
         {
             $IsLiked = 1;
-            $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
+            $data = array("ID" => $LoggedID, "Post_ID" => $PostID, "Liked" => $IsLiked);
             Db::insert("likes", $data);
         }
         else if($IsLiked == 1)
         {
-            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $Post_ID, $IsLiked);
-            $IsLiked = 0;
+            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, $IsLiked);
         }
-
-        // Fetch the like status again after the update
-        $Likes = Db::queryAll("SELECT * FROM likes WHERE ID=? AND Post_ID=?", $LoggedID, $Post_ID);
-        $IsLiked = count($Likes) > 0 ? $Likes[0]["Liked"] : 0;
     }
 ?>
 <script>
