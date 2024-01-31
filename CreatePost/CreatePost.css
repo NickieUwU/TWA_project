@@ -17,7 +17,6 @@
 }
 
 .CreatePost {
-    border: 1px solid black;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -26,12 +25,13 @@
     height: 60%;
     width: 70%;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    border-radius: 10px;
 }
 
 .CreatePost .txtContent {
     width: 98%;
-    height: 50%;
+    height: 80%;
     background-color: transparent;
     border: 1px solid black;
     border-radius: 5px;

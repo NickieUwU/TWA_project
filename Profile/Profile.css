@@ -1,5 +1,4 @@
-.whereamI
-{
+.whereamI {
     position: absolute;
     top: 0%;
     left: 50%;
@@ -12,24 +11,25 @@
 
 @media screen and (max-width: 768px) {
     .whereamI {
-      position: relative;
-      font-size: 10px;
+        position: relative;
+        font-size: 20px; /* Adjust the font size for smaller screens */
     }
-  }
-
-.User
-{
-    border: 1px solid black;
-    position: absolute;
-    left: 20%;
-    top: 9%;
-    color: #fff;
-    height: 90.5%;
-    width: 60%;
 }
 
-.PFP
-{
+.User {
+    position: absolute;
+    left: 50%; /* Center the User div */
+    top: 50%; /* Center the User div */
+    transform: translate(-50%, -50%); /* Center the User div */
+    color: #fff;
+    height: 60%; /* Adjust the height as needed */
+    width: 70%; /* Adjust the width as needed */
+    padding: 20px; /* Add padding for better appearance */
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+.PFP {
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -38,70 +38,54 @@
     left: 8%;
 }
 
-.User .Name
-{
-    border: 1px solid black;
+.User .Name, .User .Username, .User .Bio, .User .JoinedDate, .User .Action, .User .Followers, .User .Following {
     position: absolute;
+    width: fit-content;
+    padding: 10px; /* Add padding for better appearance */
+    margin: 10px; /* Add margin for better appearance */
+}
+
+.User .Name {
     top: 22%;
     left: 22%;
     font-size: x-large;
 }
 
-.User .Username
-{
-    border: 1px solid black;
-    position: absolute;
+.User .Username {
     top: 28%;
     left: 22%;
 }
 
-.User .Bio
-{
-    position: absolute;
+.User .Bio {
     top: 37%;
     left: 22%;
     max-width: 300px;
     max-height: 100px;
 }
 
-.User .JoinedDate
-{
-    position: absolute;
+.User .JoinedDate {
     top: 25%;
     left: 30%;
 }
 
-.User .Action
-{
-    position: absolute;
+.User .Action {
     top: 20%;
     left: 35%;
     height: fit-content;
     width: fit-content;
 }
 
-.User .Followers
-{
-    position: absolute;
+.User .Followers {
     top: 33%;
     left: 22%;
 }
 
-.Followers:hover
-{
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.User .Following
-{
-    position: absolute;
+.User .Following {
     top: 33%;
     left: 35%;
 }
 
-.Following:hover
-{
+.Followers:hover, .Following:hover {
     cursor: pointer;
     text-decoration: underline;
 }

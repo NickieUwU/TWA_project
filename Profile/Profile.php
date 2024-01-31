@@ -13,6 +13,18 @@
         $followers = $User["Followers"];
         $following = $User["Following"];
     }
+    $follows = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=?", $username, $_SESSION["username"]);
+    if($follows)
+    {
+        foreach($follows as $follow)
+        {
+            $IsFollowed = $follow["IsFollowed"];
+        }
+    }
+    else
+    {
+        $IsFollowed = 0;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,8 +99,13 @@
 </html>
 
 <?php
-    if($_POST)
+    if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        //following code
+        $followers++;
+        $following++;
+        $dataFollowing = array("Following" => $following);
+        Db::update("users", $dataFollowing, "WHERE ID=?", $_SESSION["username"]);
+        $dataFollower = array("Followers" => $followers);
+        Db::update("users", $dataFollower, "WHERE username=?", $username);
     }
 ?>
