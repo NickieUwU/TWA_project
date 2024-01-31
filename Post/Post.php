@@ -88,7 +88,16 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
     xhr.onload = function() {
         if (this.status == 200) 
         {
-            //Button text change    
+              var btnHeart =document.getElementById("btnHeartID");
+
+              if(btnHeart.innerText == "like")
+              {
+                btnHeart.innerText = "liked";
+              }
+              if(btnHeart == "liked")
+              {
+                btnHeart = "like";
+              }
         }
     };
     xhr.send(formData);
