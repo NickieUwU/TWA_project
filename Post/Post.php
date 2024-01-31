@@ -110,9 +110,9 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
         {
             $IsLiked = 1;
             $data = array("ID" => $LoggedID, "Post_ID" => $Post_ID, "Liked" => $IsLiked);
-            Db::insert("likes", $data); 
+            Db::insert("likes", $data);
         }
-        else
+        if($IsLiked == 1)
         {
             Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $Post_ID, $IsLiked);
             $IsLiked = 0;
