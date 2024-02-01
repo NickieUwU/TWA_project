@@ -12,7 +12,7 @@
         $bio = $User["Bio"];
         $joined = $User["Joined"];
         $followers = $User["Followers"];
-        $following = $LoggedUser["Following"];
+        $following = $User["Following"];
     }
     $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
     foreach($LoggedUsers as $LoggedUser)
