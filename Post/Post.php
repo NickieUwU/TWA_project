@@ -118,7 +118,6 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
         {
             var btnHeart = document.getElementById("btnHeartID");
             btnHeart.innerText = (btnHeart.innerText === "like") ? "liked" : "like";
-            $IsFollowed = (btnFollow.innerHTML === "follow") ? 0 : 1;
         }
     };
     xhr.send(formData);

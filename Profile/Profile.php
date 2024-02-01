@@ -12,12 +12,13 @@
         $bio = $User["Bio"];
         $joined = $User["Joined"];
         $followers = $User["Followers"];
+        $following = $LoggedUser["Following"];
     }
     $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
     foreach($LoggedUsers as $LoggedUser)
     {
         $LoggedID = $LoggedUser["ID"];
-        $following = $LoggedUser["Following"];
+        $loggedFollowing = $LoggedUser["Following"];
         
     }
     $follows = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=?", $ID, $LoggedID);
@@ -30,10 +31,37 @@
     }
     else
     {
-        $IsFollowed = 0;
+        $IsFollowed = "0";
+    }
+    $FollowText;
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        if($IsFollowed == 0)
+        {
+            $followers++;
+            $loggedFollowing++;
+            $IsFollowed = 1;
+            $dataFollowing = array("Following" => $loggedFollowing);
+            Db::update("users", $dataFollowing, "WHERE ID=?", $LoggedID);
+            $dataFollower = array("Followers" => $followers);
+            Db::update("users", $dataFollower, "WHERE ID=?", $ID);
+            $followdata = array("ID" => $ID, "LoggedID" => $LoggedID,  "IsFollowed" => $IsFollowed);
+            Db::insert("follow", $followdata);
+        }
+        elseif($IsFollowed == 1)
+        {
+            Db::query("DELETE FROM follow WHERE ID=? AND LoggedID=? AND IsFollowed=?", $ID, $LoggedID, $IsFollowed);
+            $followers--;
+            $loggedFollowing--;
+            $IsFollowed = 0;
+            $dataFollowing = array("Following" => $loggedFollowing);
+            Db::update("users", $dataFollowing, "WHERE ID=?", $LoggedID);
+            $dataFollower = array("Followers" => $followers);
+            Db::update("users", $dataFollower, "WHERE ID=?", $ID);
+        }
     }
     echo $IsFollowed;
-    $FollowText;
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,30 +144,25 @@
 </html>
 
 <?php
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        if($IsFollowed == 0)
-        {
-            $followers++;
-            $following++;
-            $IsFollowed = 1;
-            $dataFollowing = array("Following" => $following);
-            Db::update("users", $dataFollowing, "WHERE ID=?", $LoggedID);
-            $dataFollower = array("Followers" => $followers);
-            Db::update("users", $dataFollower, "WHERE ID=?", $ID);
-            $followdata = array("ID" => $ID, "LoggedID" => $LoggedID);
-            Db::insert("follow", $followdata);
-        }
-        if($IsFollowed == 1)
-        {
-            Db::query("DELETE FROM follow WHERE ID=? AND LoggedID=? AND IsFollowed=?", $ID, $LoggedID, $IsFollowed);
-            $followers--;
-            $following--;
-            $IsFollowed = 0;
-            $dataFollowing = array("Following" => $following);
-            Db::update("users", $dataFollowing, "WHERE ID=?", $LoggedID);
-            $dataFollower = array("Followers" => $followers);
-            Db::update("users", $dataFollower, "WHERE ID=?", $ID);
-        }
-    }
+    
 ?>
+
+<script>
+document.getElementById('FollowFormID').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var form = event.target;
+    var formData = new FormData(form);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action, true);
+    xhr.onload = function() {
+        if (this.status == 200) 
+        {
+            var btnFollow = document.getElementById("FollowID");
+            btnFollow.innerText = (btnFollow.innerText === "follow") ? "unfollow" : "follow";
+        }
+    };
+    xhr.send(formData);
+});
+</script>
