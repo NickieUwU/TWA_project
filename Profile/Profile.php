@@ -14,7 +14,7 @@
         $followers = $User["Followers"];
         $following = $User["Following"];
     }
-    $LoggedUsers = Db::queryAll("SELECT * FROM USERS WHERE ID=?", $_SESSION["username"]);
+    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE ID=?", $_SESSION["username"]);
     foreach($LoggedUsers as $LoggedUser)
     {
         $LoggedID = $LoggedUser["ID"];
