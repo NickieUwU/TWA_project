@@ -1,3 +1,10 @@
+h1
+{
+    color: #fff;
+    position: absolute;
+    top: 25%;
+    left: 42%;
+}
 .form_verify {
     position: absolute;
     top: 40%;
