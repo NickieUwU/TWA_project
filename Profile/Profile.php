@@ -59,9 +59,7 @@
             $dataFollower = array("Followers" => $followers);
             Db::update("users", $dataFollower, "WHERE ID=?", $ID);
         }
-    }
-    echo $IsFollowed;
-    
+    }    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,21 +117,23 @@
                         }
                         else
                         {
-                            echo "<input type='submit' name='follow' id='FollowID' value='$FollowText'>";
+                            echo '<button id="FollowID" class="btnFollow">'.$FollowText.'</button>';
                         }
                     ?>
             </div>
-            <div class="Followers">
-                <?php
-                    if($followers == 1)
-                    {
-                        echo "$followers follower";
-                    }
-                    else
-                    {
-                        echo "$followers followers";
-                    }
-                ?>
+            <div class="Followers" >
+                <label id="DisplayFollowID">
+                    <?php
+                        if($followers == 1)
+                        {
+                            echo "$followers follower";
+                        }
+                        else
+                        {
+                            echo "$followers followers";
+                        }
+                    ?>
+                </label>
             </div>
             <div class="Following">
                 <?php echo "$following following"; ?>
@@ -142,11 +142,6 @@
     </form>
 </body>
 </html>
-
-<?php
-    
-?>
-
 <script>
 document.getElementById('FollowFormID').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -157,10 +152,11 @@ document.getElementById('FollowFormID').addEventListener('submit', function(even
     var xhr = new XMLHttpRequest();
     xhr.open(form.method, form.action, true);
     xhr.onload = function() {
-        if (this.status == 200) 
+        if (xhr.status == 200) 
         {
             var btnFollow = document.getElementById("FollowID");
-            btnFollow.innerText = (btnFollow.innerText === "follow") ? "unfollow" : "follow";
+            btnFollow.innerHTML = (btnFollow.innerHTML === "follow") ? "unfollow" : "follow";
+            var Follower =document.getElementById("DisplayFollowID");
         }
     };
     xhr.send(formData);
