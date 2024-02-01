@@ -11,13 +11,14 @@
         $name = $User["Name"];
         $bio = $User["Bio"];
         $joined = $User["Joined"];
-        $following = $User["Following"];
+        $followers = $User["Followers"];
     }
     $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
     foreach($LoggedUsers as $LoggedUser)
     {
         $LoggedID = $LoggedUser["ID"];
-        $followers = $LoggedUser["Followers"];
+        $following = $LoggedUser["Following"];
+        
     }
     $follows = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=?", $ID, $LoggedID);
     if($follows)
@@ -140,26 +141,5 @@
             $dataFollower = array("Followers" => $followers);
             Db::update("users", $dataFollower, "WHERE ID=?", $ID);
         }
-        $IsFollowed = ($IsFollowed == 0) ? 1 : 0;
     }
 ?>
-
-<script>
-    document.getElementById("FollowFormID").addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        var form = event.target;
-        var formData = new FormData(form);
-
-        var xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action, true);
-        xhr.onload = () => {
-            if(xhr.status == 200)
-            {
-                var btnFollow = document.getElementById("FollowID");
-                btnFollow.innerHTML = (btnFollow.innerHTML === "follow") ? "unfollow" : "follow";
-            }
-        };
-        xhr.send(formData);
-    });
-</script>
