@@ -11,13 +11,13 @@
         $name = $User["Name"];
         $bio = $User["Bio"];
         $joined = $User["Joined"];
-        $followers = $User["Followers"];
         $following = $User["Following"];
     }
-    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE ID=?", $_SESSION["username"]);
+    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
     foreach($LoggedUsers as $LoggedUser)
     {
         $LoggedID = $LoggedUser["ID"];
+        $followers = $LoggedUser["Followers"];
     }
     $follows = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=?", $ID, $LoggedID);
     if($follows)
@@ -31,6 +31,8 @@
     {
         $IsFollowed = 0;
     }
+    echo $IsFollowed;
+    $FollowText;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,72 +45,72 @@
     <link rel="stylesheet" href="Profile.css?v=<?php echo time(); ?>">
 </head>
 <body>
-    <?php
-        require("../Nav/Nav.php");
-    ?>
-    <div class="whereamI">
-           <label class="lblMyProfile">Profile</label>
-    </div>
-    <div class="User">
-        <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
-        <div class="Name">
-            <?php
-                echo $name;
-            ?>
+    <form action='Profile.php?username=<?php echo $username; ?>' method='post' id='FollowFormID'>
+        <?php
+            require("../Nav/Nav.php");
+        ?>
+        <div class="whereamI">
+            <label class="lblMyProfile">Profile</label>
         </div>
-        <div class="Username">
-            <?php
-                echo $username;
-            ?>
-        </div>
-        <div class="Bio">
-            <?php
-                echo $bio;
-            ?>
-        </div>
-        <div class="JoinedDate">
-            <?php echo "Joined $joined"; ?>
-        </div>
-        <div class="Action">
+        <div class="User">
+            <img src="../DefaultPFP/DefaultPFP.png" class="PFP">
+            <div class="Name">
                 <?php
-                    if($IsFollowed == 0)
+                    echo $name;
+                ?>
+            </div>
+            <div class="Username">
+                <?php
+                    echo $username;
+                ?>
+            </div>
+            <div class="Bio">
+                <?php
+                    echo $bio;
+                ?>
+            </div>
+            <div class="JoinedDate">
+                <?php echo "Joined $joined"; ?>
+            </div>
+            <div class="Action">
+                    <?php
+                        if($IsFollowed == 0)
+                        {
+                            $FollowText = "follow";
+                        }
+                        elseif($IsFollowed == 1)
+                        {
+                            $FollowText = "unfollow";
+                        }
+                        if($_SESSION["username"] == $username)
+                        {
+                            echo "<a href='../ProfileEdit/ProfileEdit.php?username=$username'>
+                                    <input type='submit' name='edit' id='IDedit' value='edit'>
+                                </a>";
+                        }
+                        else
+                        {
+                            echo "<input type='submit' name='follow' id='FollowID' value='$FollowText'>";
+                        }
+                    ?>
+            </div>
+            <div class="Followers">
+                <?php
+                    if($followers == 1)
                     {
-                        $FollowText = "follow";
-                    }
-                    if($IsFollowed == 1)
-                    {
-                        $FollowText = "unfollow";
-                    }
-                    if($_SESSION["username"] == $username)
-                    {
-                        echo "<a href='../ProfileEdit/ProfileEdit.php?username=$username'>
-                                <input type='submit' name='edit' id='IDedit' value='edit'>
-                              </a>";
+                        echo "$followers follower";
                     }
                     else
                     {
-                        echo "<form action='Profile.php?username=$username' method='post' id='IDform'>
-                                <input type='submit' name='follow' value='$FollowText'>
-                              </form>";
+                        echo "$followers followers";
                     }
                 ?>
+            </div>
+            <div class="Following">
+                <?php echo "$following following"; ?>
+            </div>
         </div>
-        <div class="Followers">
-            <?php
-                if($followers == 1)
-                {
-                    echo "$followers follower";
-                }
-                else
-                {
-                    echo "$followers followers";
-                }
-            ?>
-        </div>
-        <div class="Following">
-            <?php echo "$following following"; ?>
-        </div>
-    </div>
+    </form>
 </body>
 </html>
 
@@ -130,7 +132,34 @@
         if($IsFollowed == 1)
         {
             Db::query("DELETE FROM follow WHERE ID=? AND LoggedID=? AND IsFollowed=?", $ID, $LoggedID, $IsFollowed);
+            $followers--;
+            $following--;
             $IsFollowed = 0;
+            $dataFollowing = array("Following" => $following);
+            Db::update("users", $dataFollowing, "WHERE ID=?", $LoggedID);
+            $dataFollower = array("Followers" => $followers);
+            Db::update("users", $dataFollower, "WHERE ID=?", $ID);
         }
+        $IsFollowed = ($IsFollowed == 0) ? 1 : 0;
     }
 ?>
+
+<script>
+    document.getElementById("FollowFormID").addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        var form = event.target;
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action, true);
+        xhr.onload = () => {
+            if(xhr.status == 200)
+            {
+                var btnFollow = document.getElementById("FollowID");
+                btnFollow.innerHTML = (btnFollow.innerHTML === "follow") ? "unfollow" : "follow";
+            }
+        };
+        xhr.send(formData);
+    });
+</script>

@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in</title>
-    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="Login.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
 </head>
 <body>
