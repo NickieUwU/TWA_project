@@ -23,7 +23,7 @@
     transform: translate(-50%, -50%); /* Center the User div */
     color: #fff;
     height: 60%; /* Adjust the height as needed */
-    width: 70%; /* Adjust the width as needed */
+    width: 50%; /* Adjust the width as needed */
     padding: 20px; /* Add padding for better appearance */
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
     border-radius: 10px;
@@ -38,6 +38,11 @@
     left: 8%;
 }
 
+.PFP:hover
+{
+    cursor: pointer;
+}
+
 .User .Name, .User .Username, .User .Bio, .User .JoinedDate, .User .Action, .User .Followers, .User .Following {
     position: absolute;
     width: fit-content;
@@ -49,11 +54,13 @@
     top: 22%;
     left: 22%;
     font-size: x-large;
+    padding: 10px;
 }
 
 .User .Username {
     top: 28%;
     left: 22%;
+    padding: 10px;
 }
 
 .User .Bio {
@@ -61,16 +68,18 @@
     left: 22%;
     max-width: 300px;
     max-height: 100px;
+    padding: 10px;
 }
 
 .User .JoinedDate {
     top: 25%;
     left: 30%;
+    padding: 10px;
 }
 
 .User .Action {
-    top: 20%;
-    left: 35%;
+    top: 5%;
+    left: 80%;
     height: fit-content;
     width: fit-content;
 }
@@ -78,11 +87,13 @@
 .User .Followers {
     top: 33%;
     left: 22%;
+    padding: 10px;
 }
 
 .User .Following {
     top: 33%;
     left: 35%;
+    padding: 10px;
 }
 
 .Followers:hover, .Following:hover {
@@ -90,10 +101,15 @@
     text-decoration: underline;
 }
 
-.User .btnFollow
+.btnFollow
 {
     border-radius: 10px;
     background-color: #007bff;
+    color: #fff;
+    height: fit-content;
+    width: fit-content;
+    padding: 2px;
+    font-size: medium;
 }
 
 .btnFollow:hover
