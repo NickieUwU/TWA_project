@@ -54,13 +54,11 @@
     top: 22%;
     left: 22%;
     font-size: x-large;
-    padding: 10px;
 }
 
 .User .Username {
     top: 28%;
     left: 22%;
-    padding: 10px;
 }
 
 .User .Bio {
@@ -68,13 +66,11 @@
     left: 22%;
     max-width: 300px;
     max-height: 100px;
-    padding: 10px;
 }
 
 .User .JoinedDate {
     top: 25%;
     left: 30%;
-    padding: 10px;
 }
 
 .User .Action {
@@ -87,13 +83,11 @@
 .User .Followers {
     top: 33%;
     left: 22%;
-    padding: 10px;
 }
 
 .User .Following {
     top: 33%;
     left: 35%;
-    padding: 10px;
 }
 
 .Followers:hover, .Following:hover {
