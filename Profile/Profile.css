@@ -89,3 +89,15 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.User .btnFollow
+{
+    border-radius: 10px;
+    background-color: #007bff;
+}
+
+.btnFollow:hover
+{
+    cursor: pointer;
+    background-color: #405bd4;
+}
