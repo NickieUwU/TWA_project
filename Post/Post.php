@@ -44,10 +44,26 @@
     echo $LoggedID;
     
     $BtnText;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    { 
+        $PostID = $_POST["Post_ID"];
+
+        if($IsLiked == 0)
+        {
+            $IsLiked = 1;
+            $data = array("ID" => $LoggedID, "Post_ID" => $PostID, "Liked" => $IsLiked);
+            Db::insert("likes", $data);
+        }
+        elseif($IsLiked == 1)
+        {
+            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, 1);
+            $IsLiked = 0;
+        }
+    }
 ?>
 <form action="Home.php" method="post" id="likeForm">
     <input type="hidden" name="Post_ID" value="<?php echo $Post_ID; ?>">
-
     <div class="post">
         <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
         <div class="post-info">
@@ -85,25 +101,6 @@
         </div>
     </div> 
 </form>
-
-<?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") 
-    { 
-        $PostID = $_POST["Post_ID"];
-
-        if($IsLiked == 0)
-        {
-            $IsLiked = 1;
-            $data = array("ID" => $LoggedID, "Post_ID" => $PostID, "Liked" => $IsLiked);
-            Db::insert("likes", $data);
-        }
-        else if($IsLiked == 1)
-        {
-            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, $IsLiked);
-            $IsLiked = 0;
-        }
-    }
-?>
 <script>
 document.getElementById('likeForm').addEventListener('submit', function(event) {
     event.preventDefault();
