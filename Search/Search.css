@@ -36,7 +36,7 @@
     width: 25%;
     position: absolute;
     top: 5%;
-    left: 38%;
+    left: 32%;
 }
 
 .srchbar:hover
@@ -51,12 +51,25 @@
     color: #fff;
     height: fit-content;
     width: fit-content;
-    padding: 2px;
+    padding: 10px;
     font-size: medium;
+    position: absolute;
+    right: 35.99%;
+    top: 5.5%;
 }
 
 #btnSearch:hover
 {
     cursor: pointer;
     background-color: #405bd4;
+}
+
+.SearchResults
+{
+    border: 1px solid black;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    width: 30%;
+    height: 30%;
 }
