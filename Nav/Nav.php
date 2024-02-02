@@ -6,7 +6,7 @@
         Create
     </a><br>
     <a class="navmenu" href="../Messages/Messages.php?username=<?php echo $_SESSION["username"]; ?>">
-        Messages
+    <i class="bi bi-send"></i>Messages
     </a><br>
     <a class="navmenu" href="../Profile/Profile.php?username=<?php echo $_SESSION["username"];?>">
         Profile

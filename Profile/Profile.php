@@ -70,6 +70,7 @@
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="Profile.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
     <form action='Profile.php?username=<?php echo $username; ?>' method='post' id='FollowFormID'>
@@ -112,7 +113,7 @@
                         if($_SESSION["username"] == $username)
                         {
                             echo "<a href='../ProfileEdit/ProfileEdit.php?username=$username'>
-                                    <input type='submit' name='edit' id='IDedit' value='edit'>
+                                    <input type='button' name='edit' id='IDedit' value='edit'>
                                 </a>";
                         }
                         else
