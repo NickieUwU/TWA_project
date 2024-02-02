@@ -2,7 +2,7 @@
     <a class="navmenu" href="../Home/Home.php">
         <i class="bi bi-house-door-fill"></i> Home
     </a><br>
-    <a class="navmenu" href="../Search/Search.php?username=<?php echo $_SESSION["username"]; ?>">
+    <a class="navmenu" href="../Search/Search.php">
         <i class="bi bi-search"></i> Search
     </a>
     <a class="navmenu" href="../CreatePost/CreatePost.php?username=<?php echo $_SESSION["username"];?>">
