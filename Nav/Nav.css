@@ -1,7 +1,7 @@
 nav {
     text-align: left;
     width: fit-content; 
-    height: fit-content;
+    height: 100%;
     position: fixed;
     left: 0;
     overflow-y: auto;
@@ -24,3 +24,4 @@ nav {
 .navmenu:hover {
     background-color: #405bd4;
 }
+

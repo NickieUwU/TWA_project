@@ -16,3 +16,25 @@
       font-size: 10px;
     }
   }
+
+.layout
+{
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  color: #fff;
+}
+
+.layout .UsersMessage
+{
+  border-right: 2px solid gray;
+  width: 15%;
+  height: 98%;
+  padding-top: 10px;
+  padding-left: 10px;
+  resize: none;
+}

@@ -12,7 +12,7 @@
         <i class="bi bi-send"></i> Messages
     </a><br>
     <a class="navmenu" href="../Notifications/Notifications.php?username=<?php echo $_SESSION["username"]; ?>">
-        <span class="bi bi-bell" style="font-size: 2rem;"></span> Notifications
+        <i class="bi bi-bell"></i> Notifications
     </a>
     <a class="navmenu" href="../Profile/Profile.php?username=<?php echo $_SESSION["username"];?>">
         <i class="bi bi-person-fill"></i> Profile

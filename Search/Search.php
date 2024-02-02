@@ -1,26 +1,22 @@
 <?php
     session_start();
-    require("../DbHandler.php");
-    require("../ConnectionChecker.php");
-    Db::connect("localhost", "sin", "root", "");
+    
     if(isset($_GET["searchbar"]))
     {
+        require("../DbHandler.php");
+        require("../ConnectionChecker.php");
+        Db::connect("localhost", "sin", "root", "");
         $search = $_GET["searchbar"];
 
         $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $search);
-        if($Users)
+        foreach($Users as $User)
         {
-            foreach($Users as $User)
-            {
-                $Name = $User["Name"];
-                $Username = $User["Username"];
-            }
+            $Name = $User["Name"];
+            $Username = $User["Username"];
         }
-        else
-        {
-            $Name = null;
-            $Username = null;
-        }
+        echo '<div class="SearchResults" readonly>
+                    <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'
+                  </div>';
     }
 ?>
 <!DOCTYPE html>
@@ -45,8 +41,5 @@
             <input type="submit" value="Search" id="btnSearch">
         </div>
     </form>
-    <span class="SearchResults" readonly>
-        <a href="../Profile/Profile.php?username=<?php echo $Username; ?>"><?php $Name ?></a> <?php echo $Username; ?>
-    </span>
 </body>
 </html>

@@ -23,5 +23,11 @@
     <div class="whereamI">
            <label class="lblMyProfile">Messages</label>
     </div>
+    <div class="layout">
+        <div class="UsersMessage">
+            <i class="bi bi-envelope-fill"></i> New message
+        </div>
+    </div>
+    
 </body>
 </html>
