@@ -38,3 +38,14 @@
   padding-left: 10px;
   resize: none;
 }
+
+#NewMessageRedirect
+{
+  width: fit-content;
+  height: fit-content;
+}
+
+#NewMessageRedirect:hover
+{
+  cursor: pointer;
+}

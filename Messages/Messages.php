@@ -25,9 +25,17 @@
     </div>
     <div class="layout">
         <div class="UsersMessage">
-            <i class="bi bi-envelope-fill"></i> New message
+            <div id="NewMessageRedirect">
+                <i class="bi bi-envelope-fill"></i> New message
+            </div>
         </div>
     </div>
     
 </body>
 </html>
+
+<script>
+    document.getElementById("NewMessageRedirect").addEventListener("click", function() {
+        
+    });
+</script>
