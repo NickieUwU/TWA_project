@@ -2,10 +2,25 @@
     session_start();
     require("../DbHandler.php");
     require("../ConnectionChecker.php");
-
+    Db::connect("localhost", "sin", "root", "");
     if(isset($_GET["searchbar"]))
     {
         $search = $_GET["searchbar"];
+
+        $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $search);
+        if($Users)
+        {
+            foreach($Users as $User)
+            {
+                $Name = $User["Name"];
+                $Username = $User["Username"];
+            }
+        }
+        else
+        {
+            $Name = null;
+            $Username = null;
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -30,24 +45,8 @@
             <input type="submit" value="Search" id="btnSearch">
         </div>
     </form>
-    <div class="SearchResults"></div>
+    <span class="SearchResults" readonly>
+        <a href="../Profile/Profile.php?username=<?php echo $Username; ?>"><?php $Name ?></a> <?php echo $Username; ?>
+    </span>
 </body>
 </html>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    document.getElementById("FormSearch").addEventListener("submit", (e) => {
-        e.preventDefault();
-        let form = e.target;
-        let formData = new FormData(form);
-
-        let xhr = new XMLHttpRequest();
-        xhr.open(form.method, form.action, true);
-
-        xhr.onload = () => {
-            if(xhr.status === 200){
-                
-            }
-        };
-        xhr.send(formData);
-    });
-</script>

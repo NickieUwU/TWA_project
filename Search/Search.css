@@ -68,8 +68,15 @@
 {
     border: 1px solid black;
     position: absolute;
+    background-color: transparent;
     top: 35%;
     left: 35%;
     width: 30%;
     height: 30%;
+    resize: none;
+}
+
+.SearchResults:hover
+{
+    cursor: default;
 }
