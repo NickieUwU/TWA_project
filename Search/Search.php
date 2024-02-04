@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    if(isset($_GET["searchbar"]))
+    if($_GET)
     {
         require("../DbHandler.php");
         require("../ConnectionChecker.php");

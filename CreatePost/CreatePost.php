@@ -44,7 +44,8 @@
             {
                 $ID = $User["ID"];
             }
-            $data = array("ID" => $ID, "Content" => $Content);
+            $PostCreationDate = date("Y-m-d");
+            $data = array("ID" => $ID, "Content" => $Content, "PostCreation" => $PostCreationDate);
             Db::insert("posts", $data);
         }
         else
