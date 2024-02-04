@@ -1,14 +1,14 @@
 <?php
     session_start();
-    
+
     if($_GET)
     {
         require("../DbHandler.php");
         require("../ConnectionChecker.php");
         Db::connect("localhost", "sin", "root", "");
-        $search = $_GET["searchbar"];
+        $search = $_GET["search"];
 
-        $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $search);
+        $Users = Db::queryAll("SELECT * FROM users WHERE Username LIKE ?", $search);
 
         $Name = '';
         $Username = '';
@@ -19,7 +19,7 @@
             $Username = $User["Username"];
         }
 
-        if (!empty($Name) && !empty($Username)) 
+        if(!empty($Name) && !empty($Username)) 
         {
             echo '<div class="SearchResults" readonly>
                     <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'
@@ -49,7 +49,7 @@
     </div>
     <form action="Search.php" method="get" id="FormSearch">
         <div class="search">
-            <input type="search" class="srchbar" name="searchbar" placeholder="Search" autocomplete="off">
+            <input type="search" class="srchbar" name="search" placeholder="Search" autocomplete="off">
             <input type="submit" value="Search" id="btnSearch">
         </div>
     </form>

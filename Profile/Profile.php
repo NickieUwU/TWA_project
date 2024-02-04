@@ -157,7 +157,7 @@ document.getElementById('FollowFormID').addEventListener('submit', function(even
         {
             var btnFollow = document.getElementById("FollowID");
             btnFollow.innerHTML = (btnFollow.innerHTML === "follow") ? "unfollow" : "follow";
-            var Follower =document.getElementById("DisplayFollowID");
+            var Follower = document.getElementById("DisplayFollowID");
         }
     };
     xhr.send(formData);
