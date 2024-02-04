@@ -17,7 +17,6 @@
 
     $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
 
-    $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
     foreach($Users as $User)
     {
         $Name = $User["Name"];
