@@ -9,14 +9,26 @@
         $search = $_GET["searchbar"];
 
         $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $search);
+
+        $Name = '';
+        $Username = '';
+
         foreach($Users as $User)
         {
             $Name = $User["Name"];
             $Username = $User["Username"];
         }
-        echo '<div class="SearchResults" readonly>
+
+        if (!empty($Name) && !empty($Username)) 
+        {
+            echo '<div class="SearchResults" readonly>
                     <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'
                   </div>';
+        } 
+        else 
+        {
+            echo '<div class="SearchResults" readonly>No results found</div>';
+        }
     }
 ?>
 <!DOCTYPE html>
