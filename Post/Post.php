@@ -40,7 +40,6 @@
     {
         $IsLiked = "0";
     }
-    echo $LoggedID;
     
     $BtnText;
 
