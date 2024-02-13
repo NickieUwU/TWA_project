@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../Nav/Nav.css">
     <link rel="stylesheet" href="Messages.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="Messages.js"></script>
 </head>
 <body>
     <?php
@@ -34,3 +33,10 @@
     
 </body>
 </html>
+
+<script>
+    document.getElementById("NewMessageRedirect").addEventListener("click", function() {
+        let bg = document.querySelector(".layout");
+        bg.innerHTML += "<div class='ChooseUser'></div>";
+    });
+</script>

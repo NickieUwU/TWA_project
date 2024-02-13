@@ -53,4 +53,10 @@
 .ChooseUser
 {
   position: absolute;
+  top: 5.5%;
+  left: 1%;
+  background-color: #36393e;
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
 }
