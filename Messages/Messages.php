@@ -4,6 +4,7 @@
     require("../DbHandler.php");
     $username = $_GET["username"];
     require("../ValidateUser.php");
+    Db::connect("localhost", "sin", "root", "");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,10 +34,16 @@
     
 </body>
 </html>
-
+<?php
+    $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
+    foreach($Users as $User)
+    {
+        $Username = $User["Username"];
+    }
+?>
 <script>
     document.getElementById("NewMessageRedirect").addEventListener("click", function() {
         let bg = document.querySelector(".layout");
-        bg.innerHTML += "<div class='ChooseUser'></div>";
+        bg.innerHTML += "<div class='ChooseUser'><?php echo "Placeholder" ?></div>";
     });
 </script>
