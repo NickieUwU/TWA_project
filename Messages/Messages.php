@@ -35,11 +35,18 @@
 </body>
 </html>
 <?php
-    $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
-    foreach($Users as $User)
+    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
+    foreach($LoggedUsers as $LoggedUser)
     {
-        $Username = $User["Username"];
+        $LoggedID = $LoggedUser["ID"];
+        $LoggedUsername = $LoggedUser["Username"];
     }
+    $Followings = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
+    foreach($Followings as $Following)
+    {
+        $FollowedUserID = $Following["ID"];
+    }
+    $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
 ?>
 <script>
     document.getElementById("NewMessageRedirect").addEventListener("click", function() {
