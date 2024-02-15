@@ -37,13 +37,13 @@
             <div id="NewMessageRedirect" onclick="toggleChooseUser()">
                 <i class="bi bi-envelope-fill"></i> New message
             </div>
-            <div class="ChooseUser">
+            <div class="ChooseUser" style="display: none;">
                 <?php 
                         foreach($Followings as $Following)
                         {
                             $IsFollowed = $Following["IsFollowed"];
                             $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $IsFollowed);
-                            foreach( $Users as $User )
+                            foreach($Users as $User)
                             {
                                 $Name = $User["Name"];
                                 $Username = $User["Username"];
@@ -60,7 +60,8 @@
 
         function toggleChooseUser() {
             let chooseUserDiv = document.querySelector(".ChooseUser");
-            if (!isDivVisible) {
+            if (!isDivVisible) 
+            {
                 chooseUserDiv.style.display = "block";
                 isDivVisible = true;
             } else {
