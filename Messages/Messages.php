@@ -5,6 +5,14 @@
     $username = $_GET["username"];
     require("../ValidateUser.php");
     Db::connect("localhost", "sin", "root", "");
+    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
+    foreach($LoggedUsers as $LoggedUser)
+    {
+        $LoggedID = $LoggedUser["ID"];
+        $LoggedUsername = $LoggedUser["Username"];
+        $LoggedFollowing = $LoggedUser["Following"];
+    }
+    $Followings = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,31 +34,40 @@
     </div>
     <div class="layout">
         <div class="UsersMessage">
-            <div id="NewMessageRedirect">
+            <div id="NewMessageRedirect" onclick="toggleChooseUser()">
                 <i class="bi bi-envelope-fill"></i> New message
+            </div>
+            <div class="ChooseUser">
+                <?php 
+                        foreach($Followings as $Following)
+                        {
+                            $IsFollowed = $Following["IsFollowed"];
+                            $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $IsFollowed);
+                            foreach( $Users as $User )
+                            {
+                                $Name = $User["Name"];
+                                $Username = $User["Username"];
+                                echo "$Name $Username<br>";
+                            }
+                        }
+                    ?>
             </div>
         </div>
     </div>
     
+    <script>
+        let isDivVisible = false;
+
+        function toggleChooseUser() {
+            let chooseUserDiv = document.querySelector(".ChooseUser");
+            if (!isDivVisible) {
+                chooseUserDiv.style.display = "block";
+                isDivVisible = true;
+            } else {
+                chooseUserDiv.style.display = "none";
+                isDivVisible = false;
+            }
+        }
+    </script>
 </body>
 </html>
-<?php
-    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
-    foreach($LoggedUsers as $LoggedUser)
-    {
-        $LoggedID = $LoggedUser["ID"];
-        $LoggedUsername = $LoggedUser["Username"];
-    }
-    $Followings = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
-    foreach($Followings as $Following)
-    {
-        $FollowedUserID = $Following["ID"];
-    }
-    $Users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
-?>
-<script>
-    document.getElementById("NewMessageRedirect").addEventListener("click", function() {
-        let bg = document.querySelector(".layout");
-        bg.innerHTML += "<div class='ChooseUser'><?php echo "Placeholder" ?></div>";
-    });
-</script>
