@@ -34,8 +34,6 @@
     {
         
         $search = $_GET["searchbar"];
-        $search = trim($search);
-        echo $search;
 
         $Users = Db::queryAll("SELECT * FROM users WHERE Username LIKE ?", "%".$search."%");
 
