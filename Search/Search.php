@@ -34,8 +34,10 @@
     {
         
         $search = $_GET["searchbar"];
+        $search = trim($search);
+        echo $search;
 
-        $Users = Db::queryAll("SELECT * FROM users WHERE Username LIKE ?", $search);
+        $Users = Db::queryAll("SELECT * FROM users WHERE Username LIKE ?", "%".$search."%");
 
         if($Users)
         {
@@ -44,7 +46,7 @@
                 $Name = $User["Name"];
                 $Username = $User["Username"];
                 echo '<div class="SearchResults" readonly>
-                        <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'
+                        <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'<br>
                       </div>';
             } 
         }
