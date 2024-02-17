@@ -45,10 +45,10 @@
             {
                 $Name = $User["Name"];
                 $Username = $User["Username"];
-                echo '<div class="SearchResults" readonly>
-                        <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'<br>
-                      </div>';
-            } 
+            }
+            echo '<div class="SearchResults" readonly>
+                    <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'
+                  </div><br>';
         }
 
         else 
