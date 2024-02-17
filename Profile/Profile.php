@@ -5,14 +5,25 @@
     $username = $_GET['username'];
     Db::connect("localhost", "sin", "root", "");
     $Users = Db::queryAll("SELECT * FROM  users WHERE Username=?", $username);
-    foreach($Users as $User)
+    if($Users)
     {
-        $ID = $User["ID"];
-        $name = $User["Name"];
-        $bio = $User["Bio"];
-        $joined = $User["Joined"];
-        $followers = $User["Followers"];
-        $following = $User["Following"];
+        foreach($Users as $User)
+        {
+            $ID = $User["ID"];
+            $name = $User["Name"];
+            $bio = $User["Bio"];
+            $joined = $User["Joined"];
+            $followers = $User["Followers"];
+            $following = $User["Following"];
+        }
+    }
+    else
+    {
+        $name = "";
+    }
+    if($name == "")
+    {
+        header("Location: ../404/404.php");
     }
     $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE Username=?", $_SESSION["username"]);
     foreach($LoggedUsers as $LoggedUser)
