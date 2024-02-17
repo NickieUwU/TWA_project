@@ -47,7 +47,7 @@
                 $Username = $User["Username"];
             }
             echo '<div class="SearchResults" readonly>
-                    <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'
+                    <p class="pSearchResult"><a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a>'.$Username.'</p>
                   </div><br>';
         }
 

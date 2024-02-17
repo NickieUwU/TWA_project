@@ -81,3 +81,15 @@
 {
     cursor: default;
 }
+
+.pSearchResult
+{
+    position: absolute;
+    left: 45%;
+    padding: 1px;
+}
+
+.pSearchResult a {
+    color: #fff;
+    text-decoration: none;
+}
