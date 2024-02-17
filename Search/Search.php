@@ -53,7 +53,7 @@
 
         else 
         {
-            echo '<div class="SearchResults" readonly>No results found</div>';
+            echo '<div class="SearchResults" readonly>No users were found</div>';
         }
     }
 ?>
