@@ -13,7 +13,7 @@
         include("../Nav/Nav.php");
     ?>
     <div class="Error404Div">
-        Error 404 user was not found
+        Error 404
     </div>
 </body>
 </html>
