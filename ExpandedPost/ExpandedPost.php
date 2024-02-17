@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    require("../ConnectionChecker.php");
     require("../DbHandler.php");
 ?>
 <!DOCTYPE html>

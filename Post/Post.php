@@ -92,7 +92,7 @@
 
             </div>
             <div class="comments">
-            <a href="../ExpandedPost/ExpandedPost.php?Post=<?php echo $Post_ID?>">
+            <a href="../ExpandedPost/ExpandedPost.php?Post=<?php echo $Post_ID; ?>&username=<?php echo $_SESSION["username"]; ?>">
                     <i class="bi bi-chat-left-dots-fill"></i>
             </a> 
             </div>
