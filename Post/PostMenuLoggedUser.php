@@ -5,7 +5,7 @@
 <table id="MenuTable" style="display: none;">
     <tbody>
         <tr>
-            <td class="btn btn-danger"><span class="bi bi-trash"></span>delete</td>
+            <td class="btn btn-danger"><span class="bi bi-trash">delete</span></td>
         </tr>
     </tbody>
 </table>

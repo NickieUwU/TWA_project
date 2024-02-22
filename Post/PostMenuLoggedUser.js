@@ -1,6 +1,7 @@
+let IsMenuVisible = false;
 function toggleMenu()
 {
-    let IsMenuVisible = false;
+    
     let MenuTable = document.getElementById("MenuTable");
     if(!IsMenuVisible)
     {
