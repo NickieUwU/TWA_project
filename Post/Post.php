@@ -60,6 +60,7 @@
         }
     }
 ?>
+
 <form action="Home.php" method="post" id="likeForm">
     <input type="hidden" name="Post_ID" value="<?php echo $Post_ID; ?>">
     <div class="post">

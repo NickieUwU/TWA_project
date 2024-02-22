@@ -21,6 +21,5 @@
     <div class="whereamI">
         <label class="lblMyProfile">Home</label>
     </div>
-
 </body>
 </html>

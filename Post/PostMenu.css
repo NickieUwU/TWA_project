@@ -1,6 +1,16 @@
 .MenuDiv
 {
     position: absolute;
-    top: 100%;
-    left: 100%;
+    top: 5%;
+    left: 95%;
+}
+
+td:hover
+{
+    cursor: pointer;
+}
+
+.classMenuDots:hover
+{
+    cursor: pointer;
 }
