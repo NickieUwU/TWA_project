@@ -2,14 +2,12 @@
 <link rel="stylesheet" href="../Post/PostMenu.css">
 <script src="../Post/PostMenuLoggedUser.js"></script>
 <div class="MenuDiv">
-    
-</div>
 <span class="bi bi-three-dots-vertical" id="MenuDots"></span>
-
-<table style="display: none;">
+<table id="MenuTable" style="display: none;">
     <tbody>
         <tr>
             <td class="btn btn-danger"><span class="bi bi-trash"></span>delete</td>
         </tr>
     </tbody>
 </table>
+</div>

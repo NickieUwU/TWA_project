@@ -64,7 +64,9 @@
             {
                 chooseUserDiv.style.display = "block";
                 isDivVisible = true;
-            } else {
+            } 
+            else 
+            {
                 chooseUserDiv.style.display = "none";
                 isDivVisible = false;
             }
