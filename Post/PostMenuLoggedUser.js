@@ -1,6 +1,6 @@
-let IsMenuVisible = false;
-let Menudots = document.getElementById("MenuDots");
-Menudots.addEventListener("click", () => {
+function toggleMenu()
+{
+    let IsMenuVisible = false;
     let MenuTable = document.getElementById("MenuTable");
     if(!IsMenuVisible)
     {
@@ -12,4 +12,4 @@ Menudots.addEventListener("click", () => {
         MenuTable.style.display = "none";
         IsMenuVisible = false;
     }
-});
+}
