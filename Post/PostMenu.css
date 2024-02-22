@@ -4,6 +4,20 @@
     top: 5%;
     left: 95%;
 }
+.delete span
+{
+    color: #ff0000;
+}
+
+.delete
+{
+    background-color: #808080;
+}
+
+.delete:hover
+{
+    background-color: #666666;
+}
 
 td:hover
 {
@@ -13,4 +27,9 @@ td:hover
 .classMenuDots:hover
 {
     cursor: pointer;
+}
+
+.hidden 
+{
+    display: none;
 }

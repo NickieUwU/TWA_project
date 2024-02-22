@@ -1,16 +1,15 @@
 let IsMenuVisible = false;
-function toggleMenu()
-{
-    
+
+function toggleMenu() {
     let MenuTable = document.getElementById("MenuTable");
-    if(!IsMenuVisible)
+    if (!IsMenuVisible) 
     {
-        MenuTable.style.display = "table";
+        MenuTable.classList.remove("hidden");
         IsMenuVisible = true;
-    }
-    else
+    } 
+    else 
     {
-        MenuTable.style.display = "none";
+        MenuTable.classList.add("hidden");
         IsMenuVisible = false;
     }
 }
