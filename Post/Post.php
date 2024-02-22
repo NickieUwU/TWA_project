@@ -97,6 +97,14 @@
             </a> 
             </div>
         </div>
+        <div class="menu">
+            <?php
+                if($LoggedID == $ID)
+                {
+                    include("../Post/PostMenuLoggedUser.php");
+                }
+            ?>
+        </div>
     </div> 
 </form>
 <script>
