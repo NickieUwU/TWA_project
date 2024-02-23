@@ -102,6 +102,7 @@
             <?php
                 if($LoggedID == $ID)
                 {
+                    $postID = $Post_ID;
                     include("../Post/PostMenuLoggedUser.php");
                 }
             ?>
