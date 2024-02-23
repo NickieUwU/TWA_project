@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="../Post/PostMenu.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="../Post/PostMenuLoggedUser.js"></script>
 <div class="MenuDiv">
-<span class="classMenuDots bi bi-three-dots-vertical" id="MenuDots" onclick="toggleMenu()"></span>
-    <table id="MenuTable" style="display: none; display: inline-table;">
-    <tbody>
-        <tr>
-            <td class="delete">
-                <span class="bi bi-trash"></span>
-                <span>delete</span>
-            </td>
-        </tr>
-    </tbody>
+    <span class="classMenuDots bi bi-three-dots-vertical" id="MenuDots" onclick="toggleMenu()"></span>
+    <table id="MenuTable" style="display: none;">
+        <tbody>
+            <tr>
+                <td class="delete">
+                    <span class="delete-content bi bi-trash">delete</span>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>

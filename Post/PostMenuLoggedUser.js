@@ -1,15 +1,16 @@
 let IsMenuVisible = false;
 
 function toggleMenu() {
+    console.log("Function was called successfully");
     let MenuTable = document.getElementById("MenuTable");
     if (!IsMenuVisible) 
     {
-        MenuTable.classList.remove("hidden");
+        MenuTable.style.display = "inline-table";
         IsMenuVisible = true;
     } 
     else 
     {
-        MenuTable.classList.add("hidden");
+        MenuTable.style.display = "none";
         IsMenuVisible = false;
     }
 }

@@ -19,17 +19,22 @@
     background-color: #666666;
 }
 
+td
+{
+    border: 1px #808080;
+}
+
 td:hover
 {
     cursor: pointer;
 }
 
+.delete-content
+{
+    display: inline-block;
+}
+
 .classMenuDots:hover
 {
     cursor: pointer;
-}
-
-.hidden 
-{
-    display: none;
 }
