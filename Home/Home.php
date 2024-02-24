@@ -1,6 +1,8 @@
 <?php
     session_start();
     require("../ConnectionChecker.php");
+    error_reporting(0);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Post/Post.css?v=<?php echo time(); ?>">
@@ -22,3 +25,10 @@
     <?php include("../Post/Post.php"); ?>
 </body>
 </html>
+
+<?php
+    if($_POST["NameDeleteContent"])
+    {
+        echo $Post_ID;
+    }
+?>

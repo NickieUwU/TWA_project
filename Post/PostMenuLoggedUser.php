@@ -25,15 +25,13 @@
                 type: "POST",
                 url: "Home.php",
                 data: {
-                    NameDeleteContent: $(this).attr("id")
+                    NameDeleteContent: $("#IDdelete-content").attr("id")
                 },
                 success: (resp) => {
                     console.log(resp);
-                    console.log("click");
                 },
                 error: (xhr, status, error) => {
                     console.log(xhr.responseText);
-                    console.log("No click");
                 }
             })
         });
