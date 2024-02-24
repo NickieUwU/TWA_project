@@ -10,6 +10,7 @@
         $Post_ID = $post["Post_ID"];
         $ID = $post["ID"];
         $Content = $post["Content"];
+        $Creation = $post["PostCreation"];
     }
 
     $users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
@@ -36,7 +37,7 @@
 <div class="whereamI">
     <label class="lblMyProfile">Edit post</label>
 </div>
-<form action="Edit.php?post=<?php echo $Post_ID; ?>" method="post">
+<form action="Edit.php?post=<?php echo $Post_ID; ?>&username=<?php echo $_SESSION["username"] ?>" method="post">
     <div class="CreatePost">
         <textarea class="txtContent" name="txtContent" placeholder="What's happening?"><?php echo $Content ?></textarea>
         <input type="submit" value="Edit" class="btnSubmit">
@@ -44,3 +45,12 @@
 </form>
 </body>
 </html>
+
+<?php 
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        $NewContent = $_POST["txtContent"];
+        $data = array("Content" => $NewContent);
+        Db::update("posts", $data, "WHERE Post_ID=?", $Post_ID);
+    }
+?>
