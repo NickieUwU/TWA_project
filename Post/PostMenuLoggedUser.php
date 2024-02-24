@@ -16,7 +16,7 @@
             </tr>
             <tr class="edit">
                 <td name="NameEditPost" id="IDedit-post" class="edit-post">
-                    <span name="NameEditPost" id="IDedit-post" class="edit-post"><a href="../Edit/Edit.php?post=<?php echo $Post_ID; ?>">edit</a></span>
+                    <span name="NameEditPost" id="IDedit-post" class="edit-post"><a href="../Edit/Edit.php?post=<?php echo $Post_ID; ?>&username=<?php echo $_SESSION["username"]; ?>">edit</a></span>
                 </td>
             </tr>
         </tbody>
