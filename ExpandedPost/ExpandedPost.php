@@ -2,6 +2,24 @@
     session_start();
     require("../ConnectionChecker.php");
     require("../DbHandler.php");
+    Db::connect("localhost", "sin", "root", "");
+    $users = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
+    $DisplayedPostID = $_GET["Post"];
+    foreach($users as $user)
+    {
+        $Username = $user["Username"];    
+    }
+    $posts = Db::queryAll("SELECT * FROM posts WHERE Post_ID=?", $_GET["Post"]);
+    foreach($posts as $post)
+    {
+        $Post_ID = $post["Post_ID"];
+        $Content =  $post["Content"]; 
+    }
+    if($_GET["username"] != $_SESSION["username"])
+    {
+        header("Location: ?Post=$DisplayedPostID&username=".$_SESSION["username"]);
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,5 +34,6 @@
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>
+
 </body>
 </html>

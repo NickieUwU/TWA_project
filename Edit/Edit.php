@@ -52,5 +52,6 @@
         $NewContent = $_POST["txtContent"];
         $data = array("Content" => $NewContent);
         Db::update("posts", $data, "WHERE Post_ID=?", $Post_ID);
+        Header("Location: ../Home/Home.php");
     }
 ?>
