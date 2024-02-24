@@ -13,8 +13,3 @@ function toggleMenu() {
         IsMenuVisible = false;
     }
 }
-
-function deletePost(postID)
-{
-
-}

@@ -19,11 +19,6 @@
     background-color: #666666;
 }
 
-td
-{
-    border: 1px #808080;
-}
-
 td:hover
 {
     cursor: pointer;
@@ -32,4 +27,20 @@ td:hover
 .classMenuDots:hover
 {
     cursor: pointer;
+}
+
+.edit
+{
+    background-color: #808080;
+}
+
+.edit:hover
+{
+    background-color: #666666;
+}
+
+a
+{
+    color: #fff;
+    text-decoration: none;
 }

@@ -28,12 +28,10 @@
 <?php
     if(isset($_POST["NameDeleteContent"]))
     {
-        // Retrieve the postID from the request
         $postID = $_POST["postID"];
 
         $result = Db::query("DELETE FROM posts WHERE Post_ID=?", $postID);
         
-        // Check if the delete operation was successful
         if($result)
         {
             echo "success";

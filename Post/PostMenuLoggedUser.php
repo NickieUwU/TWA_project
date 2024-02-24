@@ -14,6 +14,11 @@
                     <span id="IDdelete-content" name="NameDeleteContent" class="delete-content">delete</span>                    
                 </td>
             </tr>
+            <tr class="edit">
+                <td name="NameEditPost" id="IDedit-post" class="edit-post">
+                    <span name="NameEditPost" id="IDedit-post" class="edit-post"><a href="../Edit/Edit.php?post=<?php echo $Post_ID; ?>">edit</a></span>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
