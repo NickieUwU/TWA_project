@@ -121,8 +121,8 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
     xhr.onload = function() {
         if (this.status == 200) 
         {
-            var btnHeart = document.getElementById("btnHeartID");
-            btnHeart.innerText = (btnHeart.innerText === "like") ? "liked" : "like";
+                var btnHeart = document.getElementById("btnHeartID");
+                btnHeart.innerText = (btnHeart.innerText === "like") ? "liked" : "like";
         }
     };
     xhr.send(formData);

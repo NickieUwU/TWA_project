@@ -16,9 +16,9 @@
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>
-    <?php include("../Post/Post.php"); ?>
     <div class="whereamI">
         <label class="lblMyProfile">Home</label>
     </div>
+    <?php include("../Post/Post.php"); ?>
 </body>
 </html>

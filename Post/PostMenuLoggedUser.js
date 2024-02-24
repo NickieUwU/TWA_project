@@ -1,7 +1,6 @@
 let IsMenuVisible = false;
 
 function toggleMenu() {
-    console.log("Function was called successfully");
     let MenuTable = document.getElementById("MenuTable");
     if (!IsMenuVisible) 
     {
@@ -13,4 +12,9 @@ function toggleMenu() {
         MenuTable.style.display = "none";
         IsMenuVisible = false;
     }
+}
+
+function deletePost(postID)
+{
+
 }

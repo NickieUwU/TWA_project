@@ -1,6 +1,7 @@
 <?php
     $Post_ID = $postID;
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="../Post/PostMenu.css?v=<?php echo time(); ?>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="../Post/PostMenuLoggedUser.js"></script>
@@ -10,9 +11,31 @@
         <tbody>
             <tr>
                 <td class="delete">
-                    <span class="delete-content">delete</span>
+                    <span id="IDdelete-content" name="NameDeleteContent" class="delete-content">delete</span>                    
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<script>
+    $(document).ready(() => {
+        $("#IDdelete-content").click(() => {
+            $.ajax({
+                type: "POST",
+                url: "Home.php",
+                data: {
+                    NameDeleteContent: $(this).attr("id")
+                },
+                success: (resp) => {
+                    console.log(resp);
+                    console.log("click");
+                },
+                error: (xhr, status, error) => {
+                    console.log(xhr.responseText);
+                    console.log("No click");
+                }
+            })
+        });
+    });
+</script>
