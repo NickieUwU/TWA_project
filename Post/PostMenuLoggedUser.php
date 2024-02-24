@@ -21,14 +21,18 @@
 <script>
     $(document).ready(() => {
         $("#IDdelete-content").click(() => {
+            var postID = <?php echo $Post_ID; ?>;
+            
             $.ajax({
                 type: "POST",
                 url: "Home.php",
                 data: {
-                    NameDeleteContent: $("#IDdelete-content").attr("id")
+                    NameDeleteContent: "delete",
+                    postID: postID 
                 },
                 success: (resp) => {
                     console.log(resp);
+                    location.reload();
                 },
                 error: (xhr, status, error) => {
                     console.log(xhr.responseText);

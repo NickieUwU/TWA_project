@@ -26,11 +26,21 @@
 </html>
 
 <?php
-    if($_POST["NameDeleteContent"])
+    if(isset($_POST["NameDeleteContent"]))
     {
-        require("../DbHandler.php");
-        Db::connect("localhost", "sin", "root", "");
-        Db::query("DELETE FROM posts WHERE Post_ID=?", $Post_ID);
-        echo $Post_ID;
+        // Retrieve the postID from the request
+        $postID = $_POST["postID"];
+
+        $result = Db::query("DELETE FROM posts WHERE Post_ID=?", $postID);
+        
+        // Check if the delete operation was successful
+        if($result)
+        {
+            echo "success";
+        }
+        else
+        {
+            exit;
+        }
     }
 ?>
