@@ -2,7 +2,6 @@
     session_start();
     require("../ConnectionChecker.php");
     error_reporting(0);
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +28,9 @@
 <?php
     if($_POST["NameDeleteContent"])
     {
+        require("../DbHandler.php");
+        Db::connect("localhost", "sin", "root", "");
+        Db::query("DELETE FROM posts WHERE Post_ID=?", $Post_ID);
         echo $Post_ID;
     }
 ?>
