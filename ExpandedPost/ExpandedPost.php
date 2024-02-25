@@ -3,6 +3,7 @@
     require("../ConnectionChecker.php");
     require("../DbHandler.php");
     Db::connect("localhost", "sin", "root", "");
+    error_reporting(0);
     $users = Db::queryAll("SELECT * FROM users WHERE Username=?", $_GET["username"]);
     $DisplayedPostID = $_GET["Post"];
     foreach($users as $user)
@@ -62,13 +63,19 @@
                 foreach($Comments as $Comment)
                 {
                     $CommentUserID = $Comment["User_ID"];
-                    $CommentUsers = Db::queryAll("SELECT * FROM users", $CommentUserID);
-                    foreach($CommentUsers as $CommentUser)
-                    {
-                        $CommentName = $CommentUser["Name"];
-                        $CommentUsername = $CommentUser["Username"];
-                    }
+                    
                 }
+                $CommentUsers = Db::queryAll("SELECT * FROM users", $CommentUserID);
+                foreach($CommentUsers as $CommentUser)
+                {
+                    $CommentName = $CommentUser["Name"];
+                    $CommentUsername = $CommentUser["Username"];
+                    
+                }
+                echo 
+                    '<div class="Comment">
+                        <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">    
+                    </div><br>';
             ?>
         </div>
     </div>
@@ -79,6 +86,10 @@
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $NewCommentContent = $_POST["txtNewComment"];
+        if($NewCommentContent == "")
+        {
+            exit;
+        }
         $data = array("User_ID" => $User_ID,"Post_ID" => $DisplayedPostID,"Content" => $NewCommentContent);
         Db::insert("comments", $data);
     }

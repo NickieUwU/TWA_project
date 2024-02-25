@@ -91,3 +91,19 @@
     height: 60%;
     overflow-y: auto;
 }
+
+.Comment
+{
+    border: 1px solid black;
+    width: 99%;
+    height: 20%;
+}
+
+.PFP
+   {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid black;
+  }
