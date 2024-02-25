@@ -45,18 +45,8 @@
     </div>  
     <div class="FullPost">
         <div class="Content">
-            <textarea id="IDtxtContent" class="txtContent" readonly>
-                <?php echo $Content; ?>
-            </textarea>
+            <textarea id="IDtxtContent" class="txtContent" readonly><?php echo $Content; ?></textarea>
         </div>
     </div>
 </body>
 </html>
-<script>
-    window.onload = function() {
-    var textarea = document.getElementById('IDtxtContent');
-    textarea.addEventListener('input', function() {
-        this.value = this.value.replace(/^\s+/, '');
-    });
-};
-</script>
