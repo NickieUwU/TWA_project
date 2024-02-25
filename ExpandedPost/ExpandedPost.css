@@ -50,3 +50,19 @@
 {
     cursor: default;
 }
+
+.AddComment
+{
+    border: 1px solid black;
+    position: absolute;
+    top: 27%;
+    width: 98%;
+    height: 10%;
+}
+
+.CommentContent
+{
+    height: 100%;
+    width: 100%;
+    resize: none;
+}

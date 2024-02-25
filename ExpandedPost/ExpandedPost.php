@@ -21,6 +21,7 @@
     foreach($Posters as $Poster)
     {
         $PosterName = $Poster["Name"];
+        $PosterUsername = $Poster["Username"];
     }
     if($_GET["username"] != $_SESSION["username"])
     {
@@ -32,7 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?php echo "$PosterUsername's post"; ?></title>
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -46,6 +47,11 @@
     <div class="FullPost">
         <div class="Content">
             <textarea id="IDtxtContent" class="txtContent" readonly><?php echo $Content; ?></textarea>
+        </div>
+        <div class="AddComment">
+            <form action="<?php echo "?Post=$DisplayedPostID&username=".$_SESSION["username"]; ?>" method="POST">
+                <textarea type="text" placeholder="Comment" class="CommentContent"></textarea>
+            </form>
         </div>
     </div>
 </body>
