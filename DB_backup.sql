@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2024 at 06:15 PM
+-- Generation Time: Feb 25, 2024 at 09:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,6 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `Comment_ID` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL,
+  `Post_ID` int(11) NOT NULL,
+  `Content` varchar(100) NOT NULL,
+  `CreationDate` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `follow`
 --
 
@@ -32,6 +46,14 @@ CREATE TABLE `follow` (
   `LoggedID` int(11) NOT NULL,
   `IsFollowed` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `follow`
+--
+
+INSERT INTO `follow` (`ID`, `LoggedID`, `IsFollowed`) VALUES
+(2, 1, 1),
+(12, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -44,6 +66,15 @@ CREATE TABLE `likes` (
   `Post_ID` int(11) NOT NULL,
   `Liked` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`ID`, `Post_ID`, `Liked`) VALUES
+(1, 7, 1),
+(1, 1, 1),
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -65,9 +96,7 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`Post_ID`, `ID`, `Content`, `PostCreation`) VALUES
 (1, 1, '1st post created here', '2024-01-28'),
 (4, 2, 'WOW', '2024-01-28'),
-(5, 1, 'This gotta cost me my braincells', '2024-01-28'),
-(6, 1, 'A test post for more lines XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', '2024-01-28'),
-(7, 1, 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '2024-01-28');
+(6, 1, 'AAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAAAAAAAAAAAaAAAAAAA', '2024-01-28');
 
 -- --------------------------------------------------------
 
@@ -94,13 +123,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `Name`, `Username`, `Password`, `Email`, `Phone`, `Pfp`, `Bio`, `Joined`, `Followers`, `Following`) VALUES
-(1, 'as', '@as', '$2y$10$j8tpJ9KLNMU4bKzBnkr/8ORbA6RStcldFhFOSD.bzrl', NULL, NULL, NULL, 'Very original bio', '2024-01-25', 69, 0),
-(2, 'ds', '@ds', '$2y$10$jsCqC31A2v9sYx3klkMtt.7Gyzg4PvdJWMtaVWEyQmb', NULL, NULL, NULL, 'Why are you still here', '2024-01-27', 0, 0),
-(12, 'w', '@w', '$2y$10$MuyGEHuyLCciw31XusJs.OQtzjudIgeqve4kGWp/.6A', NULL, NULL, NULL, NULL, '2024-02-04', 0, 0);
+(1, 'as', '@as', '$2y$10$j8tpJ9KLNMU4bKzBnkr/8ORbA6RStcldFhFOSD.bzrl', NULL, NULL, NULL, 'New bio', '2024-01-25', 69, 2),
+(2, 'ds', '@ds', '$2y$10$jsCqC31A2v9sYx3klkMtt.7Gyzg4PvdJWMtaVWEyQmb', NULL, NULL, NULL, 'Why are you still here', '2024-01-27', 1, 0),
+(12, 'w', '@w', '$2y$10$MuyGEHuyLCciw31XusJs.OQtzjudIgeqve4kGWp/.6A', NULL, NULL, NULL, NULL, '2024-02-04', 1, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`Comment_ID`);
 
 --
 -- Indexes for table `posts`
@@ -122,10 +157,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `Comment_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `Post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
