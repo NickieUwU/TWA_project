@@ -7,19 +7,25 @@
     $DisplayedPostID = $_GET["Post"];
     foreach($users as $user)
     {
+        $Name = $user["Name"];
         $Username = $user["Username"];    
     }
     $posts = Db::queryAll("SELECT * FROM posts WHERE Post_ID=?", $_GET["Post"]);
     foreach($posts as $post)
     {
         $Post_ID = $post["Post_ID"];
+        $PosterID = $post["ID"];
         $Content =  $post["Content"]; 
+    }
+    $Posters = Db::queryAll("SELECT * FROM users WHERE ID=?", $PosterID);
+    foreach($Posters as $Poster)
+    {
+        $PosterName = $Poster["Name"];
     }
     if($_GET["username"] != $_SESSION["username"])
     {
         header("Location: ?Post=$DisplayedPostID&username=".$_SESSION["username"]);
     }
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +40,23 @@
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>
-
+    <div class="whereamI">
+           <label class="lblMyProfile"><?php echo "$PosterName's post"; ?></label>
+    </div>  
+    <div class="FullPost">
+        <div class="Content">
+            <textarea id="IDtxtContent" class="txtContent" readonly>
+                <?php echo $Content; ?>
+            </textarea>
+        </div>
+    </div>
 </body>
 </html>
+<script>
+    window.onload = function() {
+    var textarea = document.getElementById('IDtxtContent');
+    textarea.addEventListener('input', function() {
+        this.value = this.value.replace(/^\s+/, '');
+    });
+};
+</script>

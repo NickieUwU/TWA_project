@@ -1,0 +1,51 @@
+.whereamI 
+{
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    color: #fff;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+    width: fit-content;
+}
+
+.FullPost
+{
+    border: 1px solid black;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    height: 60%;
+    width: 50%;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+
+.Content
+{
+    border: 1px solid black;
+    color: #fff;
+    width: 98%;
+    height: 25%;
+    position: absolute;
+    top: 1%;
+    
+}
+
+.txtContent
+{
+    resize: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-color: transparent;
+    color: #fff;
+    justify-content: left;
+    outline: none;
+}
+
+.txtContent:hover
+{
+    cursor: default;
+}

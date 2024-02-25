@@ -25,7 +25,7 @@
     </div>
     <form action="CreatePost.php?username=<?php echo $_SESSION["username"]; ?>" method="post">
         <div class="CreatePost">
-            <textarea class="txtContent" name="txtContent" placeholder="What's happening?"></textarea>
+            <textarea class="txtContent" name="txtContent" placeholder="What's happening?" maxlength="500"></textarea>
             <input type="submit" value="Post" class="btnSubmit">
         </div>
     </form>

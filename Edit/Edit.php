@@ -39,7 +39,7 @@
 </div>
 <form action="Edit.php?post=<?php echo $Post_ID; ?>&username=<?php echo $_SESSION["username"] ?>" method="post">
     <div class="CreatePost">
-        <textarea class="txtContent" name="txtContent" placeholder="What's happening?"><?php echo $Content ?></textarea>
+        <textarea class="txtContent" name="txtContent" placeholder="What's happening?" maxlength="500"><?php echo $Content ?></textarea>
         <input type="submit" value="Edit" class="btnSubmit">
     </div>
 </form>
