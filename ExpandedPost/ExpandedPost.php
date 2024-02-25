@@ -64,12 +64,17 @@
                     $CommentUserID = $Comment["User_ID"];
                     $CommentContent = $Comment["Content"];
                     
-                    // Fetch user information based on User_ID of the comment
                     $CommentUser = Db::queryOne("SELECT * FROM users WHERE ID=?", $CommentUserID);
-                    if ($CommentUser) {
+                    if ($CommentUser) 
+                    {
                         $CommentName = $CommentUser["Name"];
                         $CommentUsername = $CommentUser["Username"];
-                        echo '<div class=""></div>';
+                        echo '
+                            <div class="Comment">
+                                <div class="Name">
+                                    <a href="../Profile/Profile.php?username='.$CommentUsername.'
+                                </div>
+                            </div>';
                     }
                 }
                 
