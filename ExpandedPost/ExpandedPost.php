@@ -57,25 +57,22 @@
             </form>
         </div>
         <div class="Comments">
-            
             <?php 
                 $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT 5", $DisplayedPostID);
                 foreach($Comments as $Comment)
                 {
                     $CommentUserID = $Comment["User_ID"];
+                    $CommentContent = $Comment["Content"];
                     
+                    // Fetch user information based on User_ID of the comment
+                    $CommentUser = Db::queryOne("SELECT * FROM users WHERE ID=?", $CommentUserID);
+                    if ($CommentUser) {
+                        $CommentName = $CommentUser["Name"];
+                        $CommentUsername = $CommentUser["Username"];
+                        echo '<div class=""></div>';
+                    }
                 }
-                $CommentUsers = Db::queryAll("SELECT * FROM users", $CommentUserID);
-                foreach($CommentUsers as $CommentUser)
-                {
-                    $CommentName = $CommentUser["Name"];
-                    $CommentUsername = $CommentUser["Username"];
-                    
-                }
-                echo 
-                    '<div class="Comment">
-                        <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">    
-                    </div><br>';
+                
             ?>
         </div>
     </div>
