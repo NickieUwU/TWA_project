@@ -57,6 +57,19 @@
         </div>
         <div class="Comments">
             
+            <?php 
+                $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT 5", $DisplayedPostID);
+                foreach($Comments as $Comment)
+                {
+                    $CommentUserID = $Comment["User_ID"];
+                    $CommentUsers = Db::queryAll("SELECT * FROM users", $CommentUserID);
+                    foreach($CommentUsers as $CommentUser)
+                    {
+                        $CommentName = $CommentUser["Name"];
+                        $CommentUsername = $CommentUser["Username"];
+                    }
+                }
+            ?>
         </div>
     </div>
 </body>
