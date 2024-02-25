@@ -63,6 +63,30 @@
 .CommentContent
 {
     height: 100%;
-    width: 100%;
+    width: 80%;
     resize: none;
+}
+
+.AddComment button
+{
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    border-radius: 10px;
+    background-color: #007bff;
+}
+
+.AddComment button:hover
+{
+    background-color: #405bd4;
+    cursor: pointer;
+}
+
+.Comments
+{
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    width: 98%;
+    height: 10%; 
 }
