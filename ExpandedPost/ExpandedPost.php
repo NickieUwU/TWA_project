@@ -23,6 +23,7 @@
         $PosterName = $Poster["Name"];
         $PosterUsername = $Poster["Username"];
     }
+    $User_ID = Db::query("SELECT ID FROM users WHERE Username=?", $_SESSION["username"]);
     if($_GET["username"] != $_SESSION["username"])
     {
         header("Location: ?Post=$DisplayedPostID&username=".$_SESSION["username"]);
@@ -49,10 +50,20 @@
             <textarea id="IDtxtContent" class="txtContent" readonly><?php echo $Content; ?></textarea>
         </div>
         <div class="AddComment">
-            <form action="<?php echo "?Post=$DisplayedPostID&username=".$_SESSION["username"]; ?>" method="POST">
-                <textarea type="text" placeholder="Comment" class="CommentContent"></textarea>
+            <form action="<?php echo "?Post=$DisplayedPostID&username=".$_SESSION["username"]; ?>" method="post">
+                <textarea type="text" name="txtNewComment" placeholder="Comment" class="CommentContent" maxlength="100"></textarea>
+                <button type="submit">Comment</button>
             </form>
         </div>
     </div>
 </body>
 </html>
+
+<?php
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        $NewCommentContent = $_POST["txtNewComment"];
+        $data = array("User_ID" => $User_ID,"Post_ID" => $DisplayedPostID,"Content" => $NewCommentContent);
+        Db::insert("comments", $data);
+    }
+?>
