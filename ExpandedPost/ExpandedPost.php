@@ -69,10 +69,15 @@
                     {
                         $CommentName = $CommentUser["Name"];
                         $CommentUsername = $CommentUser["Username"];
+                        $CommentDate = $CommentUser["CreationDate"];
                         echo '
                             <div class="Comment">
                                 <div class="Name">
                                     <a href="../Profile/Profile.php?username="'.$CommentUsername.'">'. $CommentName .'</a>
+                                    <p class="Username">'.$CommentUsername.'</p>
+                                </div>
+                                <div class="DateAndTime">
+                                    <p class="pDate">'.$CommentDate.'</p>
                                 </div>
                             </div>';
                     }

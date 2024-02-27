@@ -1,5 +1,4 @@
-.whereamI 
-{
+.whereamI {
     position: absolute;
     top: 0%;
     left: 50%;
@@ -10,8 +9,7 @@
     width: fit-content;
 }
 
-.FullPost
-{
+.FullPost {
     border: 1px solid black;
     position: absolute;
     top: 10%;
@@ -22,19 +20,16 @@
     border-radius: 10px;
 }
 
-.Content
-{
+.Content {
     border: 1px solid black;
     color: #fff;
     width: 100%;
     height: 25%;
     position: absolute;
     top: 1%;
-    
 }
 
-.txtContent
-{
+.txtContent {
     resize: none;
     width: 100%;
     height: 100%;
@@ -46,13 +41,11 @@
     margin: 0;
 }
 
-.txtContent:hover
-{
+.txtContent:hover {
     cursor: default;
 }
 
-.AddComment
-{
+.AddComment {
     border: 1px solid black;
     position: absolute;
     top: 27%;
@@ -60,15 +53,13 @@
     height: 10%;
 }
 
-.CommentContent
-{
+.CommentContent {
     height: 100%;
     width: 80%;
     resize: none;
 }
 
-.AddComment button
-{
+.AddComment button {
     position: absolute;
     top: 20%;
     right: 5%;
@@ -76,14 +67,12 @@
     background-color: #007bff;
 }
 
-.AddComment button:hover
-{
+.AddComment button:hover {
     background-color: #405bd4;
     cursor: pointer;
 }
 
-.Comments
-{
+.Comments {
     border: 1px solid black;
     position: absolute;
     top: 38%;
@@ -92,24 +81,41 @@
     overflow-y: auto;
 }
 
-.Comment
-{
+.Comment {
     border: 1px solid black;
     width: 99%;
     height: 20%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.PFP
-   {
+.PFP {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid black;
-  }
+}
 
-  .Name a
-  {
+.Name {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 10px; /* Add padding to separate the profile picture from the name */
+}
+
+.Name a {
     text-decoration: none;
     color: #fff;
-  }
+}
+
+.Name .Username {
+    color: #fff;
+    margin: 0; /* Remove default margin */
+    padding-left: 5px; /* Add padding to separate the name from the username */
+}
+
+.DateAndTime .pDate
+{
+    
+}
