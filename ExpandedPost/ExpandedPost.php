@@ -72,7 +72,7 @@
                         echo '
                             <div class="Comment">
                                 <div class="Name">
-                                    <a href="../Profile/Profile.php?username='.$CommentUsername.'
+                                    <a href="../Profile/Profile.php?username="'.$CommentUsername.'">'. $CommentName .'</a>
                                 </div>
                             </div>';
                     }
