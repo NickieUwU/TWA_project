@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="ExpandedPost.css?v=<?php echo time(); ?>">
+    <script src="ExpandedPost.js"></script>
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>
@@ -63,26 +64,28 @@
                 {
                     $CommentUserID = $Comment["User_ID"];
                     $CommentContent = $Comment["Content"];
-                    
+                    $CommentDate = $Comment["CreationDate"];
                     $CommentUser = Db::queryOne("SELECT * FROM users WHERE ID=?", $CommentUserID);
                     if ($CommentUser) 
                     {
                         $CommentName = $CommentUser["Name"];
                         $CommentUsername = $CommentUser["Username"];
-                        $CommentDate = $CommentUser["CreationDate"];
+                        
                         echo '
                             <div class="Comment">
                                 <div class="Name">
-                                    <a href="../Profile/Profile.php?username="'.$CommentUsername.'">'. $CommentName .'</a>
+                                    <a href="../Profile/Profile.php?username='.$CommentUsername.'">'.$CommentName .'</a>
                                     <p class="Username">'.$CommentUsername.'</p>
                                 </div>
                                 <div class="DateAndTime">
-                                    <p class="pDate">'.$CommentDate.'</p>
+                                    '.$CommentDate.'
                                 </div>
-                            </div>';
+                                <div class="DisplayedCommentContent">
+                                    '.$CommentContent.'
+                                </div>
+                            </div><br>';
                     }
-                }
-                
+                }                
             ?>
         </div>
     </div>
