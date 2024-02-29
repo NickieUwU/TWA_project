@@ -127,7 +127,7 @@
                 },
                 success: (resp) => {
                     console.log(resp);
-                    $(".Comments").append(<?php $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT $LIMIT", $DisplayedPostID); ?>);
+                    document.body.innerHTML = resp;
                 },
                 error: (xhr, status, error) => {
                     console.log(xhr.responseText);
