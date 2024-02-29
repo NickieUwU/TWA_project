@@ -60,7 +60,7 @@
         </div>
         <div class="Comments">
             <?php
-                $LIMIT = 5;
+                $LIMIT = isset($_POST['LIMIT']) ? $_POST['LIMIT'] : 5;
                 if($_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     $LIMIT += 5;
@@ -111,26 +111,28 @@
 ?>
 
 <script>
+    var limit = <?php echo $LIMIT; ?>;
+
     $(document).ready(() => {
-    $("#IDMoreComments").click(() => {
-        var newLimit = <?php echo $LIMIT + 5; ?>;
-        $.ajax({
-            type: "POST",
-            url: "<?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>",
-            data: {
-                NameMoreComments: "Add",
-                Post: <?php echo $DisplayedPostID; ?>,
-                username: "<?php echo $_SESSION['username']; ?>",
-                LIMIT: newLimit
-            },
-            success: (resp) => {
-                console.log(newLimit);
-                <?php $LIMIT = "newLimit";?> 
-            },
-            error: (xhr, status, error) => {
-                console.log(xhr.responseText);
-            }
+        $("#IDMoreComments").click(() => {
+            limit += 5;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>",
+                data: {
+                    NameMoreComments: "Add",
+                    Post: <?php echo $DisplayedPostID; ?>,
+                    username: "<?php echo $_SESSION['username']; ?>",
+                    LIMIT: limit
+                },
+                success: (resp) => {
+                    console.log(resp);
+                    $(".Comments").append(<?php $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT $LIMIT", $DisplayedPostID); ?>);
+                },
+                error: (xhr, status, error) => {
+                    console.log(xhr.responseText);
+                }
+            });
         });
     });
-});
 </script>
