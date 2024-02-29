@@ -61,6 +61,10 @@
         <div class="Comments">
             <?php
                 $LIMIT = 5;
+                if($_SERVER["REQUEST_METHOD"] == "POST")
+                {
+                    $LIMIT += 5;
+                }
                 $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT $LIMIT", $DisplayedPostID);
                 foreach($Comments as $Comment)
                 {
@@ -103,31 +107,29 @@
         $data = array("User_ID" => $User_ID,"Post_ID" => $DisplayedPostID,"Content" => $NewCommentContent);
         Db::insert("comments", $data);
     }
-    echo $LIMIT;
+    echo "$LIMIT";
 ?>
 
 <script>
     $(document).ready(() => {
-        $("#IDMoreComments").click(() => {
-            $.ajax({
-                type: "POST",
-                url: "<?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>",
-                data: {
-                    NameMoreComments: "Add",
-                    Post: <?php echo $DisplayedPostID; ?>,
-                    username: "<?php echo $_SESSION['username']; ?>"
-                },
-                success: (resp) => {
-                    <?php
-                          $LIMIT = $LIMIT + 5;  
-                    ?>
-                    console.log(resp);
-                    location.reload();
-                },
-                error: (xhr, status, error) => {
-                    console.log(xhr.responseText);
-                }
-            });
+    $("#IDMoreComments").click(() => {
+        var newLimit = <?php echo $LIMIT + 5; ?>;
+        $.ajax({
+            type: "POST",
+            url: "<?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>",
+            data: {
+                NameMoreComments: "Add",
+                Post: <?php echo $DisplayedPostID; ?>,
+                username: "<?php echo $_SESSION['username']; ?>",
+                LIMIT: newLimit
+            },
+            success: (resp) => {
+                console.log(newLimit);
+            },
+            error: (xhr, status, error) => {
+                console.log(xhr.responseText);
+            }
         });
     });
+});
 </script>
