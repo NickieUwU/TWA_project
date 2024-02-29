@@ -125,6 +125,7 @@
             },
             success: (resp) => {
                 console.log(newLimit);
+                <?php $LIMIT = "newLimit";?> 
             },
             error: (xhr, status, error) => {
                 console.log(xhr.responseText);
