@@ -1,10 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     var comments = document.querySelectorAll(".Comments .Comment");
     var commentCount = comments.length;
-
-    if (commentCount >= 5) {
-        console.log("At least 5 comments");
-    } else {
-        console.log("Less than 5 comments");
+    let CommentsDiv = document.querySelector(".Comments");
+    let LoadMore = "";
+    if (commentCount%5 == 0) 
+    {
+        LoadMore = "load more";
     }
+    else 
+    {
+        LoadMore = "";
+    }
+    CommentsDiv.innerHTML += `<div name="NameMoreComments" id="IDMoreComments" class="MoreComments">${LoadMore}</div>`;
 });

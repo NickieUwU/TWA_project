@@ -58,16 +58,16 @@
             </form>
         </div>
         <div class="Comments">
-            <?php 
-                $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT 5", $DisplayedPostID);
+            <?php
+                $LIMIT = 5;
+                $Comments = Db::queryAll("SELECT * FROM comments WHERE Post_ID=? LIMIT $LIMIT", $DisplayedPostID);
                 foreach($Comments as $Comment)
                 {
                     $CommentUserID = $Comment["User_ID"];
                     $CommentContent = $Comment["Content"];
                     $CommentDate = $Comment["CreationDate"];
                     $CommentUser = Db::queryOne("SELECT * FROM users WHERE ID=?", $CommentUserID);
-                    if ($CommentUser) 
-                    {
+                    $EditedCommentContent = wordwrap($CommentContent, 50, "<br>", true);
                         $CommentName = $CommentUser["Name"];
                         $CommentUsername = $CommentUser["Username"];
                         
@@ -81,10 +81,9 @@
                                     '.$CommentDate.'
                                 </div>
                                 <div class="DisplayedCommentContent">
-                                    '.$CommentContent.'
+                                    '.$EditedCommentContent.'
                                 </div>
                             </div><br>';
-                    }
                 }                
             ?>
         </div>
@@ -104,3 +103,25 @@
         Db::insert("comments", $data);
     }
 ?>
+
+<script>
+    $(document).ready(() => {
+        $("#IDMoreComments").click(() => {
+            $.ajax({
+                type: "POST",
+                url: <?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>,
+                data: {
+                    NameMoreComments: Add,
+                },
+                success: () => {
+                    <?php
+                          $LIMIT = $LIMIT + 5;  
+                    ?>
+                },
+                error: (xhr) => {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>

@@ -124,11 +124,23 @@
 .DateAndTime {
     color: #999;
     position: absolute;
-    top: 5%;
     right: 5%;
 }
 
 .DisplayedCommentContent
 {
     color: #fff;
+}
+
+.MoreComments
+{
+    color: #fff;
+    width: fit-content;
+    position: absolute;
+    left: 40%;
+}
+
+.MoreComments:hover
+{
+    cursor: pointer;
 }
