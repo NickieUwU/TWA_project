@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="ExpandedPost.css?v=<?php echo time(); ?>">
     <script src="ExpandedPost.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <?php include("../Nav/Nav.php"); ?>
@@ -102,6 +103,7 @@
         $data = array("User_ID" => $User_ID,"Post_ID" => $DisplayedPostID,"Content" => $NewCommentContent);
         Db::insert("comments", $data);
     }
+    echo $LIMIT;
 ?>
 
 <script>
@@ -109,16 +111,20 @@
         $("#IDMoreComments").click(() => {
             $.ajax({
                 type: "POST",
-                url: <?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>,
+                url: "<?php echo '?Post='.$DisplayedPostID.'&username='.$_SESSION["username"].'' ?>",
                 data: {
-                    NameMoreComments: Add,
+                    NameMoreComments: "Add",
+                    Post: <?php echo $DisplayedPostID; ?>,
+                    username: "<?php echo $_SESSION['username']; ?>"
                 },
-                success: () => {
+                success: (resp) => {
                     <?php
                           $LIMIT = $LIMIT + 5;  
                     ?>
+                    console.log(resp);
+                    location.reload();
                 },
-                error: (xhr) => {
+                error: (xhr, status, error) => {
                     console.log(xhr.responseText);
                 }
             });

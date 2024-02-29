@@ -37,7 +37,6 @@
                 },
                 success: (resp) => {
                     console.log(resp);
-                    location.reload();
                 },
                 error: (xhr, status, error) => {
                     console.log(xhr.responseText);
