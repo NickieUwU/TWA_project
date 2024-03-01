@@ -108,7 +108,7 @@
             ?>
         </div>
     </div> 
-</form>
+</form><br>
 <script>
 document.getElementById('likeForm').addEventListener('submit', function(event) {
     event.preventDefault();

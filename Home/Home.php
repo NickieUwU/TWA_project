@@ -34,7 +34,7 @@
         
         if($result)
         {
-            echo "success";
+            echo "Post successfully deleted";
         }
         else
         {

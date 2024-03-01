@@ -17,27 +17,36 @@
         <?php
             
             $warning = "";
-            if ($_SERVER["REQUEST_METHOD"] === "POST") 
+            if (isset($_POST["btnLogIn"])) 
             {
                 $_username = $_POST["Username"];
                 $password = $_POST["Password"];
                 $username = "@".$_username;
-
                 if(isset($username) && isset($password))
                 {
                     Db::connect("localhost", "sin", "root", "");
-                    $Users = Db::queryAll("SELECT * FROM Users WHERE Username=?", $username);
+                    $Users = Db::queryAll("SELECT * FROM users WHERE Username=?", $username);
                     if($Users)
                     {
                         foreach($Users as $User)
                         {
                             $Name = $User["Name"];
+                            $SetPassword = $User["Password"];
                         }
-                        $_SESSION["username"] = $username;
-                        $_SESSION["name"] = $Name;
-                        $_SESSION["login"] = true;
-                        header("Location: ../Home/Home.php");
-                        exit();
+                        
+                        if(password_verify($password, $SetPassword))
+                        {
+                            $_SESSION["username"] = $username;
+                            $_SESSION["name"] = $Name;
+                            $_SESSION["login"] = true;
+                            header("Location: ../Home/Home.php");
+                            exit();
+                        }
+                        else
+                        {
+                            $warning = "Incorrect password";
+                        }
+                        
                     }
                     else
                     {
@@ -49,7 +58,7 @@
         <label><?php echo $warning ?></label>
         <input type="text" name="Username" placeholder="Username" autocomplete="off"><br> 
         <input type="password" name="Password" placeholder="Password"><br>
-        <button type="submit">Log in</button>
+        <button type="submit" name="btnLogIn">Log in</button>
     </form>
     <p class="PNoAccnt">
         Don't have an account yet?<br>
