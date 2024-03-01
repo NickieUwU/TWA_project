@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("../DbHandler.php");  
+    include("../DbHandler.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,10 +31,10 @@
                         foreach($Users as $User)
                         {
                             $Name = $User["Name"];
-                            $SetPassword = $User["Password"];
+                            $hash = $User["Password"];
                         }
                         
-                        if(password_verify($password, $SetPassword))
+                        if(password_verify($password, $hash))
                         {
                             $_SESSION["username"] = $username;
                             $_SESSION["name"] = $Name;
@@ -45,6 +45,11 @@
                         else
                         {
                             $warning = "Incorrect password";
+                            //temporary
+                            /*$_SESSION["username"] = $username;
+                            $_SESSION["name"] = $Name;
+                            $_SESSION["login"] = true;
+                            header("Location: ../Home/Home.php");*/
                         }
                         
                     }
