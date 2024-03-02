@@ -31,7 +31,7 @@
                         foreach($Users as $User)
                         {
                             $Name = $User["Name"];
-                            $hash = $User["Password"];
+                            $hash = $User["Password"]; 
                         }
                         
                         if(password_verify($password, $hash))
