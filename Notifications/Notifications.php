@@ -11,10 +11,14 @@
     $follows = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
     foreach($follows as $follow)
     {
+        $ID = $follow["ID"];
         $IsNotified = $follow["IsChecked"];
     }
-
-    $NewNotifications = $Db::queryAll("SELECT * FROM follow WHERE LoggedID=? AND IsChecked=0", $LoggedID);
+    $users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
+    foreach($users as $user)
+    {
+        $Name = $user["Name"];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +39,15 @@
         include("../Nav/Nav.php");
     ?>
     <div class="Notifications">
-
+        <?php
+            if($IsNotified == 0)
+            {
+                echo '
+                    <div class="Notification"
+                        <a href="">'.$Name.'</a> just followed you!
+                    </div>';
+            }
+        ?>
     </div>
 </body>
 </html>
