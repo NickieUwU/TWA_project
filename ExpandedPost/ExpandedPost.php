@@ -73,8 +73,8 @@
                     $CommentDate = $Comment["CreationDate"];
                     $CommentUser = Db::queryOne("SELECT * FROM users WHERE ID=?", $CommentUserID);
                     $EditedCommentContent = wordwrap($CommentContent, 50, "<br>", true);
-                        $CommentName = $CommentUser["Name"];
-                        $CommentUsername = $CommentUser["Username"];
+                    $CommentName = $CommentUser["Name"];
+                    $CommentUsername = $CommentUser["Username"];
                         
                         echo '
                             <div class="Comment">
