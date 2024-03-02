@@ -45,7 +45,9 @@
             {
                 echo '
                     <div class="Notification">
-                        <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
+                        <a href="../Profile/Profile.php?username='.$Username.'">
+                            <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
+                        </a>
                         <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a> just followed you!
                     </div><br>';
             }
@@ -53,3 +55,9 @@
     </div>
 </body>
 </html>
+
+<script>
+    document.addEventListener("close", () => {
+        
+    });
+</script>
