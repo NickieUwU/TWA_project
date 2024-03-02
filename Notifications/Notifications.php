@@ -7,12 +7,18 @@
     foreach($LoggedUsers as $LoggedUser)
     {
         $LoggedID = $LoggedUser["ID"];
+        
     }
     $follows = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
     foreach($follows as $follow)
     {
         $ID = $follow["ID"];
-        $IsNotified = $follow["IsChecked"];
+        
+    }
+    $Whos = Db::queryAll("SELECT * FROM follow WHERE ID=?", $ID);
+    foreach($Whos as $Who)
+    {
+        $IsNotified = $Who["IsChecked"];
     }
     $users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
     foreach($users as $user)
@@ -43,13 +49,17 @@
         <?php
             if($IsNotified == 0)
             {
-                echo '
+                $Notifications = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=? AND IsChecked=?", $ID, $LoggedID, $IsNotified);
+                foreach($Notifications as $Notification)
+                {
+                    echo '
                     <div class="Notification">
                         <a href="../Profile/Profile.php?username='.$Username.'">
                             <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
                         </a>
                         <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a> just followed you!
                     </div><br>';
+                }
             }
         ?>
     </div>
@@ -58,6 +68,18 @@
 
 <script>
     document.addEventListener("close", () => {
-        
+        /*var form = event.target;
+        var formData = new FormData(form);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action, true);
+        xhr.onload = function() {
+            if (this.status == 200) 
+            {
+                    var btnHeart = document.getElementById("btnHeartID");
+                    btnHeart.innerText = (btnHeart.innerText === "like") ? "liked" : "like";
+            }
+        };
+        xhr.send(formData);*/
     });
 </script>
