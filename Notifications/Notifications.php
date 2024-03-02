@@ -18,6 +18,7 @@
     foreach($users as $user)
     {
         $Name = $user["Name"];
+        $Username = $user["Username"];
     }
 ?>
 <!DOCTYPE html>

@@ -19,3 +19,9 @@
     border-radius: 10px;
     overflow: hidden; /* Ensure content doesn't overflow */
 }
+
+.Notification
+{
+    color: #fff;
+    margin: 10px;
+}
