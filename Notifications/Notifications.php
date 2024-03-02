@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="Notifications.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../UniversalCSS/UniversalStyles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../Nav/Nav.php?v=<?php echo time(); ?>"> 
+    <link rel="stylesheet" href="../Nav/Nav.css?v=<?php echo time(); ?>"> 
 </head>
 <body>
     <div class="whereamI">
@@ -44,9 +44,10 @@
             if($IsNotified == 0)
             {
                 echo '
-                    <div class="Notification"
-                        <a href="">'.$Name.'</a> just followed you!
-                    </div>';
+                    <div class="Notification">
+                        <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
+                        <a href="../Profile/Profile.php?username='.$Username.'">'.$Name.'</a> just followed you!
+                    </div><br>';
             }
         ?>
     </div>
