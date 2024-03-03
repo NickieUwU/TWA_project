@@ -21,22 +21,6 @@
     overflow: auto;
 }
 
-.Notification
-{
-    color: #fff;
-    margin: 10px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-}
-
-.Notification a
-{
-    padding-left: 5px;
-    color: #fff;
-    text-decoration: none;
-}
-
 .PFP
 {
     width: 30px;

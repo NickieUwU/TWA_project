@@ -15,7 +15,7 @@
         $ID = $follow["ID"];
         $IsNotified = $follow["IsChecked"];
     }
-
+    
     $users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
     foreach($users as $user)
     {
@@ -42,22 +42,7 @@
         include("../Nav/Nav.php");
     ?>
     <div class="Notifications">
-        <?php
-            if($IsNotified == 0)
-            {
-                $Notifications = Db::queryAll("SELECT * FROM follow WHERE ID=? AND LoggedID=? AND IsChecked=?", $ID, $LoggedID, $IsNotified);
-                foreach($Notifications as $Notification)
-                {
-                    echo '
-                    <div class="Notification">
-                        <a href="../Profile/Profile.php?username='.$Username.'">
-                            <img src="../DefaultPFP/DefaultPFP.png" alt="Profile picture" class="PFP">
-                        </a>
-                        <a href="../Profile/Profile.php?username='.$Username.'">'.trim($Name).'</a> just followed you!
-                    </div><br>';
-                }
-            }
-        ?>
+        
     </div>
 </body>
 </html>
