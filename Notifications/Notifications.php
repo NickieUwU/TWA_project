@@ -37,7 +37,7 @@
                 {
                     $Username = $user["Username"];
                 }
-                
+                echo $Username;
                 if($IsChecked == 0)
                 {
                     echo "Is not checked";
