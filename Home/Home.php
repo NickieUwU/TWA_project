@@ -43,4 +43,21 @@
             exit;
         }
     }
+
+    if(isset($_POST["heart"])) 
+    { 
+        $PostID = $_POST["IsLiked"];
+
+        if($IsLiked == 0)
+        {
+            $IsLiked = 1;
+            $data = array("ID" => $LoggedID, "Post_ID" => $PostID, "Liked" => $IsLiked);
+            Db::insert("likes", $data);
+        }
+        elseif($IsLiked == 1)
+        {
+            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, 1);
+            $IsLiked = 0;
+        }
+    }
 ?>

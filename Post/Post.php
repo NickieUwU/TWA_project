@@ -42,23 +42,6 @@
     }
     
     $BtnText;
-
-    /*if ($_SERVER["REQUEST_METHOD"] == "POST") 
-    { 
-        $PostID = $_POST["Post_ID"];
-
-        if($IsLiked == 0)
-        {
-            $IsLiked = 1;
-            $data = array("ID" => $LoggedID, "Post_ID" => $PostID, "Liked" => $IsLiked);
-            Db::insert("likes", $data);
-        }
-        elseif($IsLiked == 1)
-        {
-            Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, 1);
-            $IsLiked = 0;
-        }
-    }*/
 ?>
 
 <input type="hidden" name="Post_ID" value="<?php echo $Post_ID; ?>">
@@ -74,7 +57,7 @@
     </div>
     <textarea class="post-text" name="PostContent" readonly><?php echo $Content; ?></textarea>
     <div class="actions" id="actionID">
-        <div class="heart" id="heart">
+        <div class="heart" id="heart" name="heart">
             <?php
                 if($IsLiked == 0)
                 {
@@ -132,7 +115,16 @@ $(document).ready(() => {
                 IsLiked: IsLiked
             },
             success: (resp) =>{
-                console.log(resp, IsLiked);
+                IsLiked = resp.IsLiked;
+
+                if(IsLiked == 0)
+                {
+                    $("#heart").html('<i class="bi bi-heart"></i>');
+                }
+                else if(IsLiked == 1)
+                {
+                    $("#heart").html('<i class="bi bi-heart-fill"></i>');
+                }
             },
             error: (xhr, status, error) => {
                 console.log(xhr.responseText);
