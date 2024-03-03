@@ -1,27 +1,12 @@
 <?php
     session_start();
+    $username = $_GET["username"];
     require("../DbHandler.php");
     require("../ConnectionChecker.php");
+    require("../ValidateUser.php");
     Db::connect("localhost", "sin", "root", "");
-    $LoggedUsers = Db::queryAll("SELECT * FROM users WHERE username=?", $_SESSION["username"]);
-    foreach($LoggedUsers as $LoggedUser)
-    {
-        $LoggedID = $LoggedUser["ID"];
-        
-    }
-    $follows = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
-    foreach($follows as $follow)
-    {
-        $ID = $follow["ID"];
-        $IsNotified = $follow["IsChecked"];
-    }
+    $LoggedID = Db::query("SELECT ID FROM users WHERE Username=?", $username);
     
-    $users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
-    foreach($users as $user)
-    {
-        $Name = $user["Name"];
-        $Username = $user["Username"];
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
