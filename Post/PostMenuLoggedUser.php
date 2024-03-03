@@ -27,7 +27,6 @@
     $(document).ready(() => {
         $("#IDdelete-content").click(() => {
             var postID = <?php echo $Post_ID; ?>;
-            
             $.ajax({
                 type: "POST",
                 url: "Home.php",

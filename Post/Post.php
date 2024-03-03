@@ -108,6 +108,14 @@
 $(document).ready(() => {
     let IsLiked = <?php echo $IsLiked; ?>;
     $("#heart").click(()=>{
+        if(IsLiked == 0)
+        {
+            IsLiked++;
+        }
+        else if(IsLiked == 1)
+        {
+            IsLiked--;
+        }
         $.ajax({
             type: "POST",
             url: "Home.php",
@@ -115,8 +123,7 @@ $(document).ready(() => {
                 IsLiked: IsLiked
             },
             success: (resp) =>{
-                IsLiked = resp.IsLiked;
-
+                console.log(IsLiked);
                 if(IsLiked == 0)
                 {
                     $("#heart").html('<i class="bi bi-heart"></i>');
