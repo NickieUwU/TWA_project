@@ -26,29 +26,7 @@
         include("../Nav/Nav.php");
     ?>
     <div class="Notifications">
-        <?php
-            $Notifications = Db::queryAll("SELECT * FROM follow WHERE LoggedID=?", $LoggedID);
-            foreach($Notifications as $Notification)
-            {
-                $ID = $Notification["ID"];
-                $IsChecked = $Notification["IsChecked"];
-                $users = Db::queryAll("SELECT * FROM users WHERE ID=?", $ID);
-                foreach($users as $user)
-                {
-                    $Username = $user["Username"];
-                }
-                echo $Username;
-                if($IsChecked == 0)
-                {
-                    echo "Is not checked";
-                }
-                else
-                {
-                    echo "Is checked";
-                }
-                
-            }
-        ?>
+        
     </div>
 </body>
 </html>

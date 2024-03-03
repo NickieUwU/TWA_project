@@ -61,6 +61,7 @@
     }
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <form action="Home.php" method="post" id="likeForm">
     <input type="hidden" name="Post_ID" value="<?php echo $Post_ID; ?>">
     <div class="post">
@@ -110,7 +111,7 @@
     </div> 
 </form><br>
 <script>
-document.getElementById('likeForm').addEventListener('submit', function(event) {
+/*document.getElementById('likeForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
     var form = event.target;
@@ -126,5 +127,18 @@ document.getElementById('likeForm').addEventListener('submit', function(event) {
         }
     };
     xhr.send(formData);
+});*/
+
+$(document).read(() => {
+    $("#heart").click((e)=>{
+        $.ajax({
+            type: "POST",
+            url: "Home.php",
+            data:{
+
+            }
+
+        });
+    });
 });
 </script>
