@@ -47,7 +47,7 @@
     if(isset($_POST["heart"])) 
     { 
         $PostID = $_POST["Post_ID"];
-        $IsLiked = $_POST["IsLiked"];
+        $LIMIT = isset($_POST['LIMIT']) ? $_POST['LIMIT'] : 0;
         if($IsLiked == 0)
         {
             $IsLiked = 1;
@@ -58,8 +58,6 @@
         {
             Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, 1);
             $IsLiked = 0;
-        }
-        json_encode(array("IsLiked" => $IsLiked));
-        
+        }        
     }
 ?>

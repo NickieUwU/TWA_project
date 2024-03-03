@@ -123,7 +123,6 @@ $(document).ready(() => {
                 IsLiked: IsLiked
             },
             success: (resp) =>{
-                console.log(IsLiked);
                 if(IsLiked == 0)
                 {
                     $("#heart").html('<i class="bi bi-heart"></i>');
