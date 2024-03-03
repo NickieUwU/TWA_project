@@ -39,7 +39,7 @@
                         $data = array("name" => $name, "username" => $username, "password" => $hspassword, "joined" => $joined);
                         Db::insert("users", $data);
                         $_SESSION["username"] = $username;
-                        header("Location: ../NewUserVerify/NewUserVerify.php");
+                        header("Location: ../Home/Home.php");
                     }
                 }
             }

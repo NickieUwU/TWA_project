@@ -31,25 +31,30 @@
                         foreach($Users as $User)
                         {
                             $Name = $User["Name"];
-                            $hash = $User["Password"]; 
+                            $hash = $User["Password"];
+                            $IsDeactivated = $User["IsDeactivated"];
                         }
+
                         
                         if(password_verify($password, $hash))
                         {
-                            $_SESSION["username"] = $username;
-                            $_SESSION["name"] = $Name;
-                            $_SESSION["login"] = true;
-                            header("Location: ../Home/Home.php");
-                            exit();
+                            if($IsDeactivated == 1)
+                            {
+                                $warning = "your account is disabled";
+                            }
+                            else
+                            {
+                                $_SESSION["username"] = $username;
+                                $_SESSION["name"] = $Name;
+                                $_SESSION["login"] = true;
+                                header("Location: ../Home/Home.php");
+                                exit();
+                            }
+                            
                         }
                         else
                         {
                             $warning = "Incorrect password";
-                            //temporary
-                            /*$_SESSION["username"] = $username;
-                            $_SESSION["name"] = $Name;
-                            $_SESSION["login"] = true;
-                            header("Location: ../Home/Home.php");*/
                         }
                         
                     }

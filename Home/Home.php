@@ -21,7 +21,9 @@
     <div class="whereamI">
         <label class="lblMyProfile">Home</label>
     </div>
-    <?php include("../Post/Post.php"); ?>
+    <?php 
+        include("../Post/Post.php"); 
+    ?>
 </body>
 </html>
 
