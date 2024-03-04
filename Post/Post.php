@@ -57,7 +57,7 @@
     </div>
     <textarea class="post-text" name="PostContent" readonly><?php echo $Content; ?></textarea>
     <div class="actions" id="actionID">
-        <div class="heart" id="heart" name="heart">
+        <div class="heart" id="IDheart" name="Nameheart">
             <?php
                 if($IsLiked == 0)
                 {
@@ -107,29 +107,26 @@
 
 $(document).ready(() => {
     let IsLiked = <?php echo $IsLiked; ?>;
-    $("#heart").click(()=>{
-        if(IsLiked == 0)
-        {
+    $("#IDheart").click(() => {
+        if (IsLiked == 0) {
             IsLiked++;
-        }
-        else if(IsLiked == 1)
-        {
+        } else if (IsLiked == 1) {
             IsLiked--;
         }
         $.ajax({
             type: "POST",
             url: "Home.php",
-            data:{
-                IsLiked: IsLiked
+            data: {
+                heart: true,
+                IsLiked: IsLiked,
+                Post_ID: <?php echo $Post_ID; ?>
             },
-            success: (resp) =>{
-                if(IsLiked == 0)
-                {
-                    $("#heart").html('<i class="bi bi-heart"></i>');
-                }
-                else if(IsLiked == 1)
-                {
-                    $("#heart").html('<i class="bi bi-heart-fill"></i>');
+            success: (resp) => {
+                console.log(resp);
+                if (IsLiked == 0) {
+                    $("#IDheart").html('<i class="bi bi-heart"></i>');
+                } else if (IsLiked == 1) {
+                    $("#IDheart").html('<i class="bi bi-heart-fill"></i>');
                 }
             },
             error: (xhr, status, error) => {
@@ -138,4 +135,5 @@ $(document).ready(() => {
         });
     });
 });
+
 </script>

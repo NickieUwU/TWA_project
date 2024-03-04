@@ -44,20 +44,23 @@
         }
     }
 
-    if(isset($_POST["heart"])) 
+    if(isset($_POST["Nameheart"])) 
     { 
         $PostID = $_POST["Post_ID"];
-        $LIMIT = isset($_POST['LIMIT']) ? $_POST['LIMIT'] : 0;
+        $IsLiked = $_POST["IsLiked"];
+        echo "$PostID<br>$IsLiked";
         if($IsLiked == 0)
         {
             $IsLiked = 1;
             $data = array("ID" => $LoggedID, "Post_ID" => $PostID, "Liked" => $IsLiked);
             Db::insert("likes", $data);
+            exit;
         }
         elseif($IsLiked == 1)
         {
             Db::query("DELETE FROM likes WHERE ID=? AND Post_ID=? AND Liked=?", $LoggedID, $PostID, 1);
             $IsLiked = 0;
-        }        
+            exit;
+        } 
     }
 ?>
